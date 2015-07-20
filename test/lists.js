@@ -11,3 +11,11 @@ exports['create list'] = function (test) {
     test.equal(list.tail().tail(), null);
     test.equal(list.length(), 2);
 }
+
+exports['create empty list'] = function (test) {
+    var list = lists.list();
+    
+    test.ok(list);
+    test.equal(typeof list, 'object');
+    test.equal(list.length(), 0);
+}
