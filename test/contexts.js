@@ -18,3 +18,12 @@ exports['set and get variable'] = function (test) {
     test.equal(context.get("foo"), 42);
 }
 
+exports['create with parent'] = function (test) {
+    var parent = contexts.context();
+    var context = contexts.context(parent);
+    
+    parent.set("foo", 42);
+    test.equal(context.get("foo"), 42);
+}
+
+
