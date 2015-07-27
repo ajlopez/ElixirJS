@@ -29,3 +29,11 @@ exports['create and evaluate add constants'] = function (test) {
     test.equal(result.evaluate(), 42);
 };
 
+exports['create and evaluate subtract constants'] = function (test) {
+    var result = expressions.subtract(expressions.constant(64), expressions.constant(22));
+    
+    test.ok(result);
+    test.equal(typeof result, 'object');
+    test.equal(result.evaluate(), 42);
+};
+
