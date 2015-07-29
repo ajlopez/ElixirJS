@@ -37,3 +37,10 @@ exports['create and evaluate multiply constants'] = function (test) {
     test.equal(result.evaluate(), 42);
 };
 
+exports['create and evaluate divide constants'] = function (test) {
+    var result = expressions.divide(expressions.constant(84), expressions.constant(2));
+    
+    test.ok(result);
+    test.equal(typeof result, 'object');
+    test.equal(result.evaluate(), 42);
+};
