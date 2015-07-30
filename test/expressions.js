@@ -44,3 +44,11 @@ exports['create and evaluate divide constants'] = function (test) {
     test.equal(typeof result, 'object');
     test.equal(result.evaluate(), 42);
 };
+
+exports['create and evaluate compare constants with less'] = function (test) {
+    var result = expressions.less(expressions.constant(42), expressions.constant(43));
+    
+    test.ok(result);
+    test.equal(typeof result, 'object');
+    test.strictEqual(result.evaluate(), true);
+};
