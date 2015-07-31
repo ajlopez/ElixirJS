@@ -52,3 +52,9 @@ exports['create and evaluate compare constants with less'] = function (test) {
     test.equal(typeof result, 'object');
     test.strictEqual(result.evaluate(), true);
 };
+
+exports['evaluate less'] = function (test) {
+    test.strictEqual(expressions.less(expressions.constant(42), expressions.constant(43)).evaluate(), true);
+    test.strictEqual(expressions.less(expressions.constant(42), expressions.constant(42)).evaluate(), false);
+    test.strictEqual(expressions.less(expressions.constant(42), expressions.constant(40)).evaluate(), false);
+};
