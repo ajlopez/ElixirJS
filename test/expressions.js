@@ -64,3 +64,9 @@ exports['evaluate greater than'] = function (test) {
     test.strictEqual(expressions.greater(expressions.constant(42), expressions.constant(42)).evaluate(), false);
     test.strictEqual(expressions.greater(expressions.constant(42), expressions.constant(40)).evaluate(), true);
 };
+
+exports['evaluate greater or equal than'] = function (test) {
+    test.strictEqual(expressions.greaterEqual(expressions.constant(42), expressions.constant(43)).evaluate(), false);
+    test.strictEqual(expressions.greaterEqual(expressions.constant(42), expressions.constant(42)).evaluate(), true);
+    test.strictEqual(expressions.greaterEqual(expressions.constant(42), expressions.constant(40)).evaluate(), true);
+};
