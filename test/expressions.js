@@ -70,3 +70,9 @@ exports['evaluate greater or equal than'] = function (test) {
     test.strictEqual(expressions.greaterEqual(expressions.constant(42), expressions.constant(42)).evaluate(), true);
     test.strictEqual(expressions.greaterEqual(expressions.constant(42), expressions.constant(40)).evaluate(), true);
 };
+
+exports['evaluate less or equal than'] = function (test) {
+    test.strictEqual(expressions.lessEqual(expressions.constant(42), expressions.constant(43)).evaluate(), true);
+    test.strictEqual(expressions.lessEqual(expressions.constant(42), expressions.constant(42)).evaluate(), true);
+    test.strictEqual(expressions.lessEqual(expressions.constant(42), expressions.constant(40)).evaluate(), false);
+};

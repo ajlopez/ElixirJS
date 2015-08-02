@@ -1,4 +1,4 @@
-{ "name": "elixir"
+{ "name": "elixirjs"
 , "description": "Elixir language interpreter for JavaScript/NodeJS/browser"
 , "keywords": [ "elixir", "erlang", "javascript" ]
 , "version": "0.0.1alpha"
