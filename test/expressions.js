@@ -76,3 +76,15 @@ exports['evaluate less or equal than'] = function (test) {
     test.strictEqual(expressions.lessEqual(expressions.constant(42), expressions.constant(42)).evaluate(), true);
     test.strictEqual(expressions.lessEqual(expressions.constant(42), expressions.constant(40)).evaluate(), false);
 };
+
+exports['evaluate normal or'] = function (test) {
+    test.strictEqual(expressions.or(expressions.constant(true), expressions.constant(false)).evaluate(), true);
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(false)).evaluate(), false);
+    test.strictEqual(expressions.or(expressions.constant(null), expressions.constant(null)).evaluate(), false);
+    test.strictEqual(expressions.or(expressions.constant(0), expressions.constant(false)).evaluate(), true);
+    test.strictEqual(expressions.or(expressions.constant(""), expressions.constant(false)).evaluate(), true);
+    test.strictEqual(expressions.or(expressions.constant(null), expressions.constant(false)).evaluate(), false);
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(0)).evaluate(), true);
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant("")).evaluate(), true);
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(null)).evaluate(), false);
+};
