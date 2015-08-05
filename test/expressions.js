@@ -104,3 +104,13 @@ exports['evaluate normal and'] = function (test) {
     test.strictEqual(expressions.and(expressions.constant(true), expressions.constant("")).evaluate(), true);
     test.strictEqual(expressions.and(expressions.constant(false), expressions.constant(null)).evaluate(), false);
 };
+
+exports['evaluate normal not'] = function (test) {
+    test.strictEqual(expressions.not(expressions.constant(true)).evaluate(), false);
+    test.strictEqual(expressions.not(expressions.constant(false)).evaluate(), true);
+    test.strictEqual(expressions.not(expressions.constant(null)).evaluate(), true);
+    test.strictEqual(expressions.not(expressions.constant(42)).evaluate(), false);
+    test.strictEqual(expressions.not(expressions.constant("")).evaluate(), false);
+    test.strictEqual(expressions.not(expressions.constant(3.1415)).evaluate(), false);
+    test.strictEqual(expressions.not(expressions.constant("foo")).evaluate(), false);
+};
