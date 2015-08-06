@@ -114,3 +114,10 @@ exports['evaluate normal not'] = function (test) {
     test.strictEqual(expressions.not(expressions.constant(3.1415)).evaluate(), false);
     test.strictEqual(expressions.not(expressions.constant("foo")).evaluate(), false);
 };
+
+exports['evaluate logical or'] = function (test) {
+    test.strictEqual(expressions.logicalOr(expressions.constant(true), expressions.constant(false)).evaluate(), true);
+    test.strictEqual(expressions.logicalOr(expressions.constant(false), expressions.constant(true)).evaluate(), true);
+    test.strictEqual(expressions.logicalOr(expressions.constant(false), expressions.constant(false)).evaluate(), false);
+};
+
