@@ -138,3 +138,7 @@ exports['logical or raise exception if first value is not boolean'] = function (
     );
 };
 
+exports['logical or is short circuit'] = function (test) {
+    test.ok(expressions.logicalOr(expressions.constant(true), expressions.constant(1)).evaluate());
+};
+
