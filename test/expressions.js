@@ -129,3 +129,12 @@ exports['evaluate logical and'] = function (test) {
     test.strictEqual(expressions.logicalAnd(expressions.constant(false), expressions.constant(false)).evaluate(), false);
 };
 
+exports['logical or raise exception if first value is not boolean'] = function (test) {
+    test.throws(
+        function () {
+            expressions.logicalOr(expressions.constant(1), expressions.constant(true)).evaluate();
+        },
+        "Value is not boolean"
+    );
+};
+
