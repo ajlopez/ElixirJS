@@ -142,3 +142,12 @@ exports['logical or is short circuit'] = function (test) {
     test.ok(expressions.logicalOr(expressions.constant(true), expressions.constant(1)).evaluate());
 };
 
+exports['logical or raise exception if second value is not boolean'] = function (test) {
+    test.throws(
+        function () {
+            expressions.logicalOr(expressions.constant(false), expressions.constant(1)).evaluate();
+        },
+        "Value is not boolean"
+    );
+};
+
