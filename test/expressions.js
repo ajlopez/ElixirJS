@@ -151,3 +151,25 @@ exports['logical or raise exception if second value is not boolean'] = function 
     );
 };
 
+exports['logical and raise exception if first value is not boolean'] = function (test) {
+    test.throws(
+        function () {
+            expressions.logicalAnd(expressions.constant(1), expressions.constant(true)).evaluate();
+        },
+        "Value is not boolean"
+    );
+};
+
+exports['logical and is short circuit'] = function (test) {
+    test.ok(!expressions.logicalAnd(expressions.constant(false), expressions.constant(1)).evaluate());
+};
+
+exports['logical and raise exception if second value is not boolean'] = function (test) {
+    test.throws(
+        function () {
+            expressions.logicalAnd(expressions.constant(true), expressions.constant(1)).evaluate();
+        },
+        "Value is not boolean"
+    );
+};
+
