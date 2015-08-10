@@ -173,3 +173,8 @@ exports['logical and raise exception if second value is not boolean'] = function
     );
 };
 
+exports['evaluate logical not'] = function (test) {
+    test.strictEqual(expressions.logicalNot(expressions.constant(true)).evaluate(), false);
+    test.strictEqual(expressions.logicalNot(expressions.constant(false)).evaluate(), true);
+};
+
