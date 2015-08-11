@@ -178,3 +178,11 @@ exports['evaluate logical not'] = function (test) {
     test.strictEqual(expressions.logicalNot(expressions.constant(false)).evaluate(), true);
 };
 
+exports['logical not raise exception if value is not boolean'] = function (test) {
+    test.throws(
+        function () {
+            expressions.logicalNot(expressions.constant(1)).evaluate();
+        },
+        "Value is not boolean"
+    );
+};
