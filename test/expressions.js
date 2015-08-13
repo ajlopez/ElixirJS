@@ -186,3 +186,10 @@ exports['logical not raise exception if value is not boolean'] = function (test)
         "Value is not boolean"
     );
 };
+
+exports['evaluate rem with positive integers'] = function (test) {
+    test.strictEqual(expressions.rem(expressions.constant(3), expressions.constant(2)).evaluate(), 1);
+    test.strictEqual(expressions.rem(expressions.constant(4), expressions.constant(2)).evaluate(), 0);
+    test.strictEqual(expressions.rem(expressions.constant(5), expressions.constant(3)).evaluate(), 2);
+};
+
