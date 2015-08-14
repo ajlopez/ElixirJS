@@ -200,3 +200,8 @@ exports['evaluate rem with negative integers'] = function (test) {
     test.strictEqual(expressions.rem(expressions.constant(-3), expressions.constant(-3)).evaluate(), 0);
 };
 
+exports['evaluate string concatenation'] = function (test) {
+    test.strictEqual(expressions.concat(expressions.constant("foo"), expressions.constant("bar")).evaluate(), "foobar");
+};
+
+
