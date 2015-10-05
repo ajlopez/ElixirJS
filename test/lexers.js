@@ -14,6 +14,18 @@ exports['get name'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get integer'] = function (test) {
+    var lexer = lexers.lexer('123');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '123');
+    test.equal(token.type, TokenType.Integer);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get name with underscore'] = function (test) {
     var lexer = lexers.lexer('foo_bar');
     
