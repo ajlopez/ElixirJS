@@ -30,6 +30,7 @@ TBD
 
 - [Elixir Programming Language](http://elixir-lang.org)
 - [Elixir Basic Operators](http://elixir-lang.org/getting-started/basic-operators.html)
+- [Elixir to JavaScript](https://github.com/bryanjos/elixirscript)
 
 ## Contribution
 
