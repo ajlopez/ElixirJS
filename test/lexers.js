@@ -96,10 +96,24 @@ exports['get list operators'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
-exports['get boolean operators'] = function (test) {
+exports['get strict boolean operators'] = function (test) {
     var lexer = lexers.lexer('not and or');
     
     ["not", "and", "or"].forEach(function (value) {
+        var token = lexer.nextToken();
+        
+        test.ok(token);
+        test.equal(token.value, value);
+        test.equal(token.type, TokenType.Operator);
+    });
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get boolean operators'] = function (test) {
+    var lexer = lexers.lexer('! && ||');
+    
+    ["!", "&&", "||"].forEach(function (value) {
         var token = lexer.nextToken();
         
         test.ok(token);
