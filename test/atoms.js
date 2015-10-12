@@ -10,5 +10,8 @@ exports['create atom'] = function (test) {
     test.equal(atom.name(), "foo");
     
     test.ok(atom.isAtom());
+    test.equal(atom.isVariable(), false);
+    test.equal(atom.isList(), false);
+    test.equal(atom.isTuple(), false);
 }
 
