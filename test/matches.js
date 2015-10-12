@@ -4,6 +4,7 @@ var variables = require('../lib/variables');
 var contexts = require('../lib/contexts');
 var tuples = require('../lib/tuples');
 var lists = require('../lib/lists');
+var atoms = require('../lib/atoms');
 
 exports['match integers'] = function (test) {
     test.ok(matches.match(1, 1, null));
@@ -27,6 +28,31 @@ exports['match tuples'] = function (test) {
     var tuple2 = tuples.tuple([1, 2, 3]);
     var tuple3 = tuples.tuple([1, 2]);
     var tuple4 = tuples.tuple([1, 2, 4]);
+    
+    test.ok(matches.match(tuple1, tuple1, null));
+    test.ok(matches.match(tuple1, tuple2, null));
+    test.ok(matches.match(tuple2, tuple1, null));
+    
+    test.equal(matches.match(tuple1, tuple3, null), false);
+    test.equal(matches.match(tuple1, tuple4, null), false);
+    test.equal(matches.match(tuple1, null, null), false);
+    test.equal(matches.match(tuple1, 42, null), false);
+    test.equal(matches.match(tuple1, "foo", null), false);
+};
+
+exports['match tuples with atoms'] = function (test) {
+    var atoma = atoms.atom('a');
+    var atoma2 = atoms.atom('a');
+    var atomb = atoms.atom('b');
+    var atomb2 = atoms.atom('b');
+    var atomc = atoms.atom('c');
+    var atomc2 = atoms.atom('c');
+    var atomd = atoms.atom('d');
+    
+    var tuple1 = tuples.tuple([atoma, atomb, atomc]);
+    var tuple2 = tuples.tuple([atoma2, atomb2, atomc2]);
+    var tuple3 = tuples.tuple([atoma, atomb]);
+    var tuple4 = tuples.tuple([atoma, atomb, atomd]);
     
     test.ok(matches.match(tuple1, tuple1, null));
     test.ok(matches.match(tuple1, tuple2, null));
