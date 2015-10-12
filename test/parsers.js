@@ -42,3 +42,27 @@ exports['parse and evaluate atom'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate variable'] = function (test) {
+    var parser = parsers.parser('a');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var ctx = contexts.context();
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.ok(result.isVariable());
+    test.equal(result.name(), "a");
+    
+    ctx.set("a", 42);
+
+    var result = expr.evaluate(ctx);
+    test.ok(result);
+    test.equal(result, 42);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
