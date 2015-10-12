@@ -8,5 +8,7 @@ exports['create atom'] = function (test) {
     test.equal(typeof atom, 'object');
     test.equal(atom.toString(), ":foo");
     test.equal(atom.name(), "foo");
+    
+    test.ok(atom.isAtom());
 }
 
