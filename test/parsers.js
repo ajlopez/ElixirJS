@@ -105,3 +105,22 @@ exports['parse and evaluate tuple expression with variable'] = function (test) {
     
     test.equal(parser.parseExpression(), null);
 };
+
+exports['parse and evaluate list expression'] = function (test) {
+    var parser = parsers.parser('[1,2,3]');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 2);
+    test.equal(result.get(2), 3);
+    
+    test.equal(parser.parseExpression(), null);
+};
