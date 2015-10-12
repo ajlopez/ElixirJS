@@ -21,6 +21,18 @@ exports['create and evaluate variable in context'] = function (test) {
     test.equal(result.evaluate(ctx), 42);
 };
 
+exports['evaluate undefined variable'] = function (test) {
+    var expr = expressions.variable("n");
+    var ctx = contexts.context();
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(typeof result, 'object');
+    test.ok(result.isVariable());
+    test.equal(result.name(), "n");
+};
+
 exports['create and evaluate add constants'] = function (test) {
     var result = expressions.add(expressions.constant(20), expressions.constant(22));
     
