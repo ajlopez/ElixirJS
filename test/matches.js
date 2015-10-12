@@ -3,6 +3,7 @@ var matches = require('../lib/matches');
 var variables = require('../lib/variables');
 var contexts = require('../lib/contexts');
 var tuples = require('../lib/tuples');
+var lists = require('../lib/lists');
 
 exports['match integers'] = function (test) {
     test.ok(matches.match(1, 1, null));
@@ -55,4 +56,38 @@ exports['match tuples with variables'] = function (test) {
     test.equal(ctx.get('c'), 3);
 };
 
+
+exports['match lists'] = function (test) {
+    var list1 = lists.list(1, lists.list(2, lists.list(3, null)));
+    var list2 = lists.list(1, lists.list(2, lists.list(3, null)));
+    var list3 = lists.list(1, lists.list(2, null));
+    var list4 = lists.list(1, lists.list(2, lists.list(4, null)));
+    
+    test.ok(matches.match(list1, list1, null));
+    test.ok(matches.match(list1, list2, null));
+    test.ok(matches.match(list2, list1, null));
+    
+    test.equal(matches.match(list1, list3, null), false);
+    test.equal(matches.match(list1, list4, null), false);
+    test.equal(matches.match(list1, null, null), false);
+    test.equal(matches.match(list1, 42, null), false);
+    test.equal(matches.match(list1, "foo", null), false);
+};
+
+exports['match lists with variables'] = function (test) {
+    var vara = variables.variable('a');
+    var varb = variables.variable('b');
+    var varc = variables.variable('c');
+    
+    var list1 = lists.list(vara, lists.list(varb, lists.list(varc, null)));
+    var list2 = lists.list(1, lists.list(2, lists.list(3, null)));
+
+    var ctx = contexts.context();
+    
+    test.ok(matches.match(list1, list2, ctx));
+    
+    test.equal(ctx.get('a'), 1);
+    test.equal(ctx.get('b'), 2);
+    test.equal(ctx.get('c'), 3);
+};
 
