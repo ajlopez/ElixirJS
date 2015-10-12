@@ -2,6 +2,7 @@
 var matches = require('../lib/matches');
 var variables = require('../lib/variables');
 var contexts = require('../lib/contexts');
+var tuples = require('../lib/tuples');
 
 exports['match integers'] = function (test) {
     test.ok(matches.match(1, 1, null));
@@ -18,5 +19,22 @@ exports['match variable'] = function (test) {
     var ctx = contexts.context();
     test.ok(matches.match(vara, 42, ctx));
     test.equal(ctx.get('a'), 42);
+};
+
+exports['match tuples'] = function (test) {
+    var tuple1 = tuples.tuple([1, 2, 3]);
+    var tuple2 = tuples.tuple([1, 2, 3]);
+    var tuple3 = tuples.tuple([1, 2]);
+    var tuple4 = tuples.tuple([1, 2, 4]);
+    
+    test.ok(matches.match(tuple1, tuple1, null));
+    test.ok(matches.match(tuple1, tuple2, null));
+    test.ok(matches.match(tuple2, tuple1, null));
+    
+    test.equal(matches.match(tuple1, tuple3, null), false);
+    test.equal(matches.match(tuple1, tuple4, null), false);
+    test.equal(matches.match(tuple1, null, null), false);
+    test.equal(matches.match(tuple1, 42, null), false);
+    test.equal(matches.match(tuple1, "foo", null), false);
 };
 
