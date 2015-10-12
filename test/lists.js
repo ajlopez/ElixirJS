@@ -29,6 +29,14 @@ exports['create list from array'] = function (test) {
     test.equal(list.length(), 3);
 }
 
+exports['get elements'] = function (test) {
+    var list = lists.create([1, 2, 3]);
+    
+    test.equal(list.get(0), 1);
+    test.equal(list.get(1), 2);
+    test.equal(list.get(2), 3);
+}
+
 exports['create empty list'] = function (test) {
     var list = lists.list();
     
