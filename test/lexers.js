@@ -68,6 +68,24 @@ exports['get names'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get atoms'] = function (test) {
+    var lexer = lexers.lexer(':foo :bar');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Atom);
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'bar');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get arithmethic operators'] = function (test) {
     var lexer = lexers.lexer('+ - * /');
     
