@@ -10,5 +10,10 @@ exports['create tuple'] = function (test) {
     test.equal(tuple.get(0), 1);
     test.equal(tuple.get(1), 2);
     test.equal(tuple.get(2), 3);
+
+    test.ok(tuple.isTuple());
+    test.equal(tuple.isAtom(), false);
+    test.equal(tuple.isVariable(), false);
+    test.equal(tuple.isList(), false);
 }
 
