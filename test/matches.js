@@ -38,3 +38,21 @@ exports['match tuples'] = function (test) {
     test.equal(matches.match(tuple1, "foo", null), false);
 };
 
+exports['match tuples with variables'] = function (test) {
+    var vara = variables.variable('a');
+    var varb = variables.variable('b');
+    var varc = variables.variable('c');
+    
+    var tuple1 = tuples.tuple([vara, varb, varc]);
+    var tuple2 = tuples.tuple([1, 2, 3]);
+
+    var ctx = contexts.context();
+    
+    test.ok(matches.match(tuple1, tuple2, ctx));
+    
+    test.equal(ctx.get('a'), 1);
+    test.equal(ctx.get('b'), 2);
+    test.equal(ctx.get('c'), 3);
+};
+
+
