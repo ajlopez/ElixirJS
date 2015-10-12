@@ -228,3 +228,19 @@ exports['evaluate tuple expression'] = function (test) {
     test.equal(result.get(1), 2);
     test.equal(result.get(2), 3);
 };
+
+exports['evaluate tuple expression with variable'] = function (test) {
+    var expr = expressions.tuple([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
+    var ctx = contexts.context();
+    
+    ctx.set('a', 42);
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.ok(result.isTuple());
+    test.equal(result.size(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 42);
+    test.equal(result.get(2), 3);
+};
