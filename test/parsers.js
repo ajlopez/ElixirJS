@@ -85,3 +85,23 @@ exports['parse and evaluate tuple expression'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate tuple expression with variable'] = function (test) {
+    var parser = parsers.parser('{1,a,3}');
+    var ctx = contexts.context();
+    ctx.set('a', 42);
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.ok(result.isTuple());
+    test.equal(result.size(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 42);
+    test.equal(result.get(2), 3);
+    
+    test.equal(parser.parseExpression(), null);
+};
