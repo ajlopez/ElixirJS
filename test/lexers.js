@@ -86,6 +86,24 @@ exports['get atoms'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get false and true as atoms'] = function (test) {
+    var lexer = lexers.lexer('false true');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'false');
+    test.equal(token.type, TokenType.Atom);
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'true');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get arithmethic operators'] = function (test) {
     var lexer = lexers.lexer('+ - * /');
     
