@@ -1,5 +1,6 @@
 
 var parsers = require('../lib/parsers');
+var contexts = require('../lib/contexts');
 
 exports['parse and evaluate integer'] = function (test) {
     var parser = parsers.parser('42');
@@ -21,6 +22,22 @@ exports['parse and evaluate string'] = function (test) {
     test.ok(result);
     
     test.strictEqual(result.evaluate(null), "foo");
+    
+    test.equal(parser.parseExpression(), null);
+};
+
+exports['parse and evaluate atom'] = function (test) {
+    var parser = parsers.parser(':foo');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isAtom());
+    test.equal(result.name(), "foo");
     
     test.equal(parser.parseExpression(), null);
 };
