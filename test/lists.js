@@ -10,6 +10,11 @@ exports['create list'] = function (test) {
     test.equal(list.tail().head(), 2);
     test.equal(list.tail().tail(), null);
     test.equal(list.length(), 2);
+    
+    test.ok(list.isList());
+    test.equal(list.isAtom(), false);
+    test.equal(list.isVariable(), false);
+    test.equal(list.isTuple(), false);
 }
 
 exports['create empty list'] = function (test) {
@@ -18,4 +23,9 @@ exports['create empty list'] = function (test) {
     test.ok(list);
     test.equal(typeof list, 'object');
     test.equal(list.length(), 0);
+    
+    test.ok(list.isList());
+    test.equal(list.isAtom(), false);
+    test.equal(list.isVariable(), false);
+    test.equal(list.isTuple(), false);
 }
