@@ -216,4 +216,15 @@ exports['evaluate string concatenation'] = function (test) {
     test.strictEqual(expressions.concat(expressions.constant("foo"), expressions.constant("bar")).evaluate(), "foobar");
 };
 
-
+exports['evaluate tuple expression'] = function (test) {
+    var expr = expressions.tuple([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isTuple());
+    test.equal(result.size(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 2);
+    test.equal(result.get(2), 3);
+};
