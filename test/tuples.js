@@ -17,3 +17,9 @@ exports['create tuple'] = function (test) {
     test.equal(tuple.isList(), false);
 }
 
+exports['tuple to string'] = function (test) {
+    var tuple = tuples.tuple([1, 2, 3]);
+    
+    test.equal(tuple.toString(), "{ 1, 2, 3 }");
+}
+
