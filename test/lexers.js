@@ -173,9 +173,9 @@ exports['get string'] = function (test) {
 };
 
 exports['get first delimiters'] = function (test) {
-    var lexer = lexers.lexer('{}[],');
+    var lexer = lexers.lexer('{}[],()');
     
-    ["{", "}", "[", "]", ","].forEach(function (value) {
+    ["{", "}", "[", "]", ",", "(", ")"].forEach(function (value) {
         var token = lexer.nextToken();
         
         test.ok(token);
