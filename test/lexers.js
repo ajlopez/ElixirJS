@@ -68,6 +68,42 @@ exports['get names'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get atoms'] = function (test) {
+    var lexer = lexers.lexer(':foo :bar');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Atom);
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'bar');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get false and true as atoms'] = function (test) {
+    var lexer = lexers.lexer('false true');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'false');
+    test.equal(token.type, TokenType.Atom);
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'true');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get arithmethic operators'] = function (test) {
     var lexer = lexers.lexer('+ - * /');
     
@@ -96,10 +132,24 @@ exports['get list operators'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
-exports['get boolean operators'] = function (test) {
+exports['get strict boolean operators'] = function (test) {
     var lexer = lexers.lexer('not and or');
     
     ["not", "and", "or"].forEach(function (value) {
+        var token = lexer.nextToken();
+        
+        test.ok(token);
+        test.equal(token.value, value);
+        test.equal(token.type, TokenType.Operator);
+    });
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get boolean operators'] = function (test) {
+    var lexer = lexers.lexer('! && ||');
+    
+    ["!", "&&", "||"].forEach(function (value) {
         var token = lexer.nextToken();
         
         test.ok(token);
@@ -118,6 +168,20 @@ exports['get string'] = function (test) {
     test.ok(token);
     test.equal(token.value, "foo");
     test.equal(token.type, TokenType.String);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get first delimiters'] = function (test) {
+    var lexer = lexers.lexer('{}[],()');
+    
+    ["{", "}", "[", "]", ",", "(", ")"].forEach(function (value) {
+        var token = lexer.nextToken();
+        
+        test.ok(token);
+        test.equal(token.value, value);
+        test.equal(token.type, TokenType.Delimiter);
+    });
     
     test.equal(lexer.nextToken(), null);
 };

@@ -21,6 +21,18 @@ exports['create and evaluate variable in context'] = function (test) {
     test.equal(result.evaluate(ctx), 42);
 };
 
+exports['evaluate undefined variable'] = function (test) {
+    var expr = expressions.variable("n");
+    var ctx = contexts.context();
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(typeof result, 'object');
+    test.ok(result.isVariable());
+    test.equal(result.name(), "n");
+};
+
 exports['create and evaluate add constants'] = function (test) {
     var result = expressions.add(expressions.constant(20), expressions.constant(22));
     
@@ -204,4 +216,61 @@ exports['evaluate string concatenation'] = function (test) {
     test.strictEqual(expressions.concat(expressions.constant("foo"), expressions.constant("bar")).evaluate(), "foobar");
 };
 
+exports['evaluate tuple expression'] = function (test) {
+    var expr = expressions.tuple([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isTuple());
+    test.equal(result.size(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 2);
+    test.equal(result.get(2), 3);
+};
+
+exports['evaluate tuple expression with variable'] = function (test) {
+    var expr = expressions.tuple([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
+    var ctx = contexts.context();
+    
+    ctx.set('a', 42);
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.ok(result.isTuple());
+    test.equal(result.size(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 42);
+    test.equal(result.get(2), 3);
+};
+
+exports['evaluate list expression'] = function (test) {
+    var expr = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 2);
+    test.equal(result.get(2), 3);
+};
+
+exports['evaluate list expression with variable'] = function (test) {
+    var expr = expressions.list([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
+    var ctx = contexts.context();
+    
+    ctx.set('a', 42);
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 3);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 42);
+    test.equal(result.get(2), 3);
+};
 
