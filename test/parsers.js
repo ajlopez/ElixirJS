@@ -54,6 +54,62 @@ exports['parse and evaluate atom'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate false'] = function (test) {
+    var parser = parsers.parser('false');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.strictEqual(result, false);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
+exports['parse and evaluate true'] = function (test) {
+    var parser = parsers.parser('true');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.strictEqual(result, true);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
+exports['parse and evaluate atom false'] = function (test) {
+    var parser = parsers.parser(':false');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.strictEqual(result, false);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
+exports['parse and evaluate atom true'] = function (test) {
+    var parser = parsers.parser(':true');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.strictEqual(result, true);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate variable'] = function (test) {
     var parser = parsers.parser('a');
     
