@@ -214,3 +214,21 @@ exports['parse and evaluate list expression with variable'] = function (test) {
     
     test.equal(parser.parseExpression(), null);
 };
+
+exports['parse and evaluate match variable'] = function (test) {
+    var parser = parsers.parser("a = 42");
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var ctx = contexts.context();
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(ctx.get('a'), 42);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
