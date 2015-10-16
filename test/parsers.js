@@ -232,3 +232,18 @@ exports['parse and evaluate match variable'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate add numbers'] = function (test) {
+    var parser = parsers.parser("40 + 2");
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.equal(result, 42);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
