@@ -276,3 +276,18 @@ exports['parse and evaluate multiply numbers'] = function (test) {
     
     test.equal(parser.parseExpression(), null);
 };
+
+exports['parse and evaluate divide numbers'] = function (test) {
+    var parser = parsers.parser("3/2");
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.equal(result, 3/2);
+    
+    test.equal(parser.parseExpression(), null);
+};
