@@ -61,3 +61,21 @@ exports['create empty list'] = function (test) {
     test.equal(list.isVariable(), false);
     test.equal(list.isTuple(), false);
 }
+
+exports['append lists'] = function (test) {
+    var list1 = lists.create([1, 2, 3]);
+    var list2 = lists.create([4, 5]);
+    
+    var result = list1.append(list2);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 5);
+
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 2);
+    test.equal(result.get(2), 3);
+    test.equal(result.get(3), 4);
+    test.equal(result.get(4), 5);
+}
+
