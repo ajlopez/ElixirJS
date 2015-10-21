@@ -79,3 +79,17 @@ exports['append lists'] = function (test) {
     test.equal(result.get(4), 5);
 }
 
+exports['append empty list to list'] = function (test) {
+    var list1 = lists.create([]);
+    var list2 = lists.create([4, 5]);
+    
+    var result = list1.append(list2);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 2);
+
+    test.equal(result.get(0), 4);
+    test.equal(result.get(1), 5);
+}
+
