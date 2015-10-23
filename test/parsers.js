@@ -215,6 +215,27 @@ exports['parse and evaluate list expression with variable'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate append lists'] = function (test) {
+    var parser = parsers.parser('[1,2,3] ++ [4,5]');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 5);
+    test.equal(result.get(0), 1);
+    test.equal(result.get(1), 2);
+    test.equal(result.get(2), 3);
+    test.equal(result.get(3), 4);
+    test.equal(result.get(4), 5);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate match variable'] = function (test) {
     var parser = parsers.parser("a = 42");
     
