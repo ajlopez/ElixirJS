@@ -118,3 +118,15 @@ exports['list to array'] = function (test) {
     test.deepEqual(result, [1, 2, 3, 4]);
 }
 
+exports['empty list to array'] = function (test) {
+    var list = lists.create([]);
+    
+    var result = list.toArray();
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 0);
+    test.deepEqual(result, []);
+}
+
+
