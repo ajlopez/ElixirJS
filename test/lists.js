@@ -107,3 +107,14 @@ exports['append list to empty list'] = function (test) {
     test.equal(result.get(1), 5);
 }
 
+exports['list to array'] = function (test) {
+    var list = lists.create([1, 2, 3, 4]);
+    
+    var result = list.toArray();
+    
+    test.ok(result);
+    test.ok(Array.isArray(result));
+    test.equal(result.length, 4);
+    test.deepEqual(result, [1, 2, 3, 4]);
+}
+
