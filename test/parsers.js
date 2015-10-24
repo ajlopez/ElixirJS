@@ -312,3 +312,18 @@ exports['parse and evaluate divide numbers'] = function (test) {
     
     test.equal(parser.parseExpression(), null);
 };
+
+exports['parse and evaluate string concatenation'] = function (test) {
+    var parser = parsers.parser('"foo" <> "bar"');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.equal(result, "foobar");
+    
+    test.equal(parser.parseExpression(), null);
+};
