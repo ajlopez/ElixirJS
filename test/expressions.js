@@ -271,6 +271,19 @@ exports['evaluate append lists expression'] = function (test) {
     test.deepEqual(result.toArray(), [1, 2, 3, 4, 5]);
 };
 
+exports['evaluate subtract lists expression'] = function (test) {
+    var lexpr1 = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)])
+    var lexpr2 = expressions.list([expressions.constant(2), expressions.constant(5)])
+    var expr = expressions.subtractl(lexpr1, lexpr2);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isList());
+    test.equal(result.length(), 2);
+    test.deepEqual(result.toArray(), [1, 3]);
+};
+
 exports['evaluate list expression with variable'] = function (test) {
     var expr = expressions.list([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
     var ctx = contexts.context();
