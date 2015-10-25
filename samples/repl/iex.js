@@ -1,6 +1,5 @@
 
-var parsers = require('../../lib/parsers');
-var contexts = require('../../lib/contexts');
+var elixir = require('../..');
 var util = require('util');
 
 // http://stackoverflow.com/questions/19182057/node-js-repl-funny-behavior-with-custom-eval-function
@@ -10,7 +9,7 @@ process.stdin.on('data', function(chunk) {
   buffer += chunk.toString('utf8');
 });
 
-var ctx = contexts.context();
+var ctx = elixir.context();
 
 util.inspect = function (obj) { return obj.toString(); }
 
@@ -19,8 +18,8 @@ require('repl').start({
     output: process.stdout,
     eval: function (cmd, context, filename, cb) {
         console.log(buffer);
-        var parser = parsers.parser(buffer);
+        var result = elixir.evaluate(buffer, ctx);
         buffer = '';
-        cb(null, parser.parseExpression().evaluate(ctx).toString());
+        cb(null, result == null ? result : result.toString());
     }
 });
