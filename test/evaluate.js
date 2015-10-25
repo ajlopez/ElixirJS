@@ -35,3 +35,19 @@ exports['Evaluate subtract lists'] = function (test) {
     test.ok(result);
     test.strictEqual(result.toString(), "[ 1, 2 ]");
 };
+
+exports['Evaluate subtract lists'] = function (test) {
+    var result = elixir.evaluate('[1,2,3]--[3,5]');
+    
+    test.ok(result);
+    test.strictEqual(result.toString(), "[ 1, 2 ]");
+};
+
+exports['Evaluate variable in context'] = function (test) {
+    var ctx = elixir.context();
+    ctx.set('a', 42);
+    var result = elixir.evaluate('a', ctx);
+    
+    test.ok(result);
+    test.strictEqual(result, 42);
+};
