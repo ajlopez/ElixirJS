@@ -21,3 +21,10 @@ exports['Evaluate list'] = function (test) {
     test.ok(result);
     test.strictEqual(result.toString(), "[ 1, 2, 3 ]");
 };
+
+exports['Evaluate append lists'] = function (test) {
+    var result = elixir.evaluate('[1,2,3]++[4,5]');
+    
+    test.ok(result);
+    test.strictEqual(result.toString(), "[ 1, 2, 3, 4, 5 ]");
+};
