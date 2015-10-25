@@ -28,3 +28,10 @@ exports['Evaluate append lists'] = function (test) {
     test.ok(result);
     test.strictEqual(result.toString(), "[ 1, 2, 3, 4, 5 ]");
 };
+
+exports['Evaluate subtract lists'] = function (test) {
+    var result = elixir.evaluate('[1,2,3]--[3,5]');
+    
+    test.ok(result);
+    test.strictEqual(result.toString(), "[ 1, 2 ]");
+};
