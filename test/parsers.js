@@ -287,6 +287,36 @@ exports['parse and evaluate add numbers'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate add and multiply numbers using precedence'] = function (test) {
+    var parser = parsers.parser("1 + 3 * 2");
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.equal(result, 7);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
+exports['parse and evaluate multiply and add numbers using precedence'] = function (test) {
+    var parser = parsers.parser("3 * 2 + 1");
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.equal(result, 7);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate subtract numbers'] = function (test) {
     var parser = parsers.parser("44 - 2");
     
