@@ -272,6 +272,24 @@ exports['parse and evaluate match variable'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate match two variables using right association'] = function (test) {
+    var parser = parsers.parser("x = y = 42");
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var ctx = contexts.context();
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(ctx.get('x'), 42);
+    test.equal(ctx.get('y'), 42);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate add numbers'] = function (test) {
     var parser = parsers.parser("40 + 2");
     

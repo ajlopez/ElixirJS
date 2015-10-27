@@ -8,18 +8,18 @@ var atoms = require('../lib/atoms');
 
 exports['match integers'] = function (test) {
     test.ok(matches.match(1, 1, null));
-    test.equal(matches.match(1, 2, null), false);
+    test.equal(matches.match(1, 2, null), null);
 };
 
 exports['match strings'] = function (test) {
     test.ok(matches.match("foo", "foo", null));
-    test.equal(matches.match("foo", "bar", null), false);
+    test.equal(matches.match("foo", "bar", null), null);
 };
 
 exports['match variable'] = function (test) {
     var vara = variables.variable('a');
     var ctx = contexts.context();
-    test.ok(matches.match(vara, 42, ctx));
+    test.equal(matches.match(vara, 42, ctx), 42);
     test.equal(ctx.get('a'), 42);
 };
 
@@ -33,11 +33,11 @@ exports['match tuples'] = function (test) {
     test.ok(matches.match(tuple1, tuple2, null));
     test.ok(matches.match(tuple2, tuple1, null));
     
-    test.equal(matches.match(tuple1, tuple3, null), false);
-    test.equal(matches.match(tuple1, tuple4, null), false);
-    test.equal(matches.match(tuple1, null, null), false);
-    test.equal(matches.match(tuple1, 42, null), false);
-    test.equal(matches.match(tuple1, "foo", null), false);
+    test.equal(matches.match(tuple1, tuple3, null), null);
+    test.equal(matches.match(tuple1, tuple4, null), null);
+    test.equal(matches.match(tuple1, null, null), null);
+    test.equal(matches.match(tuple1, 42, null), null);
+    test.equal(matches.match(tuple1, "foo", null), null);
 };
 
 exports['match tuples with atoms'] = function (test) {
@@ -58,11 +58,11 @@ exports['match tuples with atoms'] = function (test) {
     test.ok(matches.match(tuple1, tuple2, null));
     test.ok(matches.match(tuple2, tuple1, null));
     
-    test.equal(matches.match(tuple1, tuple3, null), false);
-    test.equal(matches.match(tuple1, tuple4, null), false);
-    test.equal(matches.match(tuple1, null, null), false);
-    test.equal(matches.match(tuple1, 42, null), false);
-    test.equal(matches.match(tuple1, "foo", null), false);
+    test.equal(matches.match(tuple1, tuple3, null), null);
+    test.equal(matches.match(tuple1, tuple4, null), null);
+    test.equal(matches.match(tuple1, null, null), null);
+    test.equal(matches.match(tuple1, 42, null), null);
+    test.equal(matches.match(tuple1, "foo", null), null);
 };
 
 exports['match tuples with variables'] = function (test) {
@@ -82,7 +82,6 @@ exports['match tuples with variables'] = function (test) {
     test.equal(ctx.get('c'), 3);
 };
 
-
 exports['match lists'] = function (test) {
     var list1 = lists.list(1, lists.list(2, lists.list(3, null)));
     var list2 = lists.list(1, lists.list(2, lists.list(3, null)));
@@ -93,11 +92,11 @@ exports['match lists'] = function (test) {
     test.ok(matches.match(list1, list2, null));
     test.ok(matches.match(list2, list1, null));
     
-    test.equal(matches.match(list1, list3, null), false);
-    test.equal(matches.match(list1, list4, null), false);
-    test.equal(matches.match(list1, null, null), false);
-    test.equal(matches.match(list1, 42, null), false);
-    test.equal(matches.match(list1, "foo", null), false);
+    test.equal(matches.match(list1, list3, null), null);
+    test.equal(matches.match(list1, list4, null), null);
+    test.equal(matches.match(list1, null, null), null);
+    test.equal(matches.match(list1, 42, null), null);
+    test.equal(matches.match(list1, "foo", null), null);
 };
 
 exports['match lists with variables'] = function (test) {
