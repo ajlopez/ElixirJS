@@ -395,11 +395,18 @@ exports['parse and evaluate string concatenation'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
-exports['parse and evaluate and expression'] = function (test) {
+exports['parse and evaluate logical and expression'] = function (test) {
     test.strictEqual(eval("true and true"), true);
     test.strictEqual(eval("true and false"), false);
     test.strictEqual(eval("false and true"), false);
     test.strictEqual(eval("false and false"), false);
+};
+
+exports['parse and evaluate logical or expression'] = function (test) {
+    test.strictEqual(eval("true or true"), true);
+    test.strictEqual(eval("true or false"), true);
+    test.strictEqual(eval("false or true"), true);
+    test.strictEqual(eval("false or false"), false);
 };
 
 function eval(text) {
