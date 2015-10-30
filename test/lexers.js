@@ -86,8 +86,8 @@ exports['get atoms'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
-exports['get false and true as atoms'] = function (test) {
-    var lexer = lexers.lexer('false true');
+exports['get false, true and nil as atoms'] = function (test) {
+    var lexer = lexers.lexer('false true nil');
     
     var token = lexer.nextToken();
 
@@ -99,6 +99,12 @@ exports['get false and true as atoms'] = function (test) {
 
     test.ok(token);
     test.equal(token.value, 'true');
+    test.equal(token.type, TokenType.Atom);
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'nil');
     test.equal(token.type, TokenType.Atom);
     
     test.equal(lexer.nextToken(), null);

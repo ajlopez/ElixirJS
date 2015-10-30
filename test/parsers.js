@@ -68,6 +68,20 @@ exports['parse and evaluate false'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate nil as null'] = function (test) {
+    var parser = parsers.parser('nil');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.strictEqual(result, null);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate true'] = function (test) {
     var parser = parsers.parser('true');
     
@@ -407,6 +421,13 @@ exports['parse and evaluate logical or expression'] = function (test) {
     test.strictEqual(eval("true or false"), true);
     test.strictEqual(eval("false or true"), true);
     test.strictEqual(eval("false or false"), false);
+};
+
+exports['parse and evaluate and expression'] = function (test) {
+    test.strictEqual(eval("1 && false"), false);
+    test.strictEqual(eval("1 && nil"), null);
+    test.strictEqual(eval("false && 17"), false);
+    test.strictEqual(eval("3 && 17"), 17);
 };
 
 function eval(text) {
