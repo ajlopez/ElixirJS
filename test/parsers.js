@@ -430,6 +430,13 @@ exports['parse and evaluate and expression'] = function (test) {
     test.strictEqual(eval("3 && 17"), 17);
 };
 
+exports['parse and evaluate or expression'] = function (test) {
+    test.strictEqual(eval("1 || false"), 1);
+    test.strictEqual(eval("1 || nil"), 1);
+    test.strictEqual(eval("false || 17"), 17);
+    test.strictEqual(eval("3 || 17"), 3);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();

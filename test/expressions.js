@@ -92,13 +92,13 @@ exports['evaluate less or equal than'] = function (test) {
 exports['evaluate normal or'] = function (test) {
     test.strictEqual(expressions.or(expressions.constant(true), expressions.constant(false)).evaluate(), true);
     test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(false)).evaluate(), false);
-    test.strictEqual(expressions.or(expressions.constant(null), expressions.constant(null)).evaluate(), false);
-    test.strictEqual(expressions.or(expressions.constant(0), expressions.constant(false)).evaluate(), true);
-    test.strictEqual(expressions.or(expressions.constant(""), expressions.constant(false)).evaluate(), true);
+    test.strictEqual(expressions.or(expressions.constant(null), expressions.constant(null)).evaluate(), null);
+    test.strictEqual(expressions.or(expressions.constant(0), expressions.constant(false)).evaluate(), 0);
+    test.strictEqual(expressions.or(expressions.constant(""), expressions.constant(false)).evaluate(), "");
     test.strictEqual(expressions.or(expressions.constant(null), expressions.constant(false)).evaluate(), false);
-    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(0)).evaluate(), true);
-    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant("")).evaluate(), true);
-    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(null)).evaluate(), false);
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(0)).evaluate(), 0);
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant("")).evaluate(), "");
+    test.strictEqual(expressions.or(expressions.constant(false), expressions.constant(null)).evaluate(), null);
 };
 
 exports['evaluate normal and'] = function (test) {
