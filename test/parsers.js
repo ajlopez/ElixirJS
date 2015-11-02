@@ -444,6 +444,13 @@ exports['parse and evaluate rem expression'] = function (test) {
     test.strictEqual(eval("rem 3, -2"), 1);
 };
 
+exports['parse and evaluate rem expression with parens'] = function (test) {
+    test.strictEqual(eval("rem(1, 2)"), 1);
+    test.strictEqual(eval("rem(-2, 3)"), -2);
+    test.strictEqual(eval("rem(4, -2)"), 0);
+    test.strictEqual(eval("rem(3, -2)"), 1);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
