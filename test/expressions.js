@@ -212,6 +212,19 @@ exports['evaluate rem with negative integers'] = function (test) {
     test.strictEqual(expressions.rem(expressions.constant(-3), expressions.constant(-3)).evaluate(), 0);
 };
 
+exports['evaluate div with positive integers'] = function (test) {
+    test.strictEqual(expressions.div(expressions.constant(3), expressions.constant(2)).evaluate(), 1);
+    test.strictEqual(expressions.div(expressions.constant(4), expressions.constant(2)).evaluate(), 2);
+    test.strictEqual(expressions.div(expressions.constant(5), expressions.constant(3)).evaluate(), 1);
+};
+
+exports['evaluate div with negative integers'] = function (test) {
+    test.strictEqual(expressions.div(expressions.constant(-3), expressions.constant(2)).evaluate(), -1);
+    test.strictEqual(expressions.div(expressions.constant(-3), expressions.constant(-2)).evaluate(), 1);
+    test.strictEqual(expressions.div(expressions.constant(-3), expressions.constant(3)).evaluate(), -1);
+    test.strictEqual(expressions.div(expressions.constant(-3), expressions.constant(-3)).evaluate(), 1);
+};
+
 exports['evaluate string concatenation'] = function (test) {
     test.strictEqual(expressions.concat(expressions.constant("foo"), expressions.constant("bar")).evaluate(), "foobar");
 };
