@@ -459,6 +459,14 @@ exports['parse and evaluate div expression'] = function (test) {
     test.strictEqual(eval("div 3, -2"), -1);
 };
 
+exports['parse and evaluate div expression with parens'] = function (test) {
+    test.strictEqual(eval("div(1, 2)"), 0);
+    test.strictEqual(eval("div(-2, 3)"), 0);
+    test.strictEqual(eval("div(-4, 3)"), -1);
+    test.strictEqual(eval("div(4, -2)"), -2);
+    test.strictEqual(eval("div(3, -2)"), -1);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
