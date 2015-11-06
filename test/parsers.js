@@ -467,6 +467,11 @@ exports['parse and evaluate div expression with parens'] = function (test) {
     test.strictEqual(eval("div(3, -2)"), -1);
 };
 
+exports['parse and evaluate equal expression'] = function (test) {
+    test.strictEqual(eval("1 == 0"), false);
+    test.strictEqual(eval("42 == 42"), true);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
