@@ -477,6 +477,12 @@ exports['parse and evaluate not equal expression'] = function (test) {
     test.strictEqual(eval("42 != 42"), false);
 };
 
+exports['parse and evaluate less expression'] = function (test) {
+    test.strictEqual(eval("1 < 0"), false);
+    test.strictEqual(eval("1 < 1"), false);
+    test.strictEqual(eval("1 < 42"), true);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
