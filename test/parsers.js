@@ -472,6 +472,11 @@ exports['parse and evaluate equal expression'] = function (test) {
     test.strictEqual(eval("42 == 42"), true);
 };
 
+exports['parse and evaluate not equal expression'] = function (test) {
+    test.strictEqual(eval("1 != 0"), true);
+    test.strictEqual(eval("42 != 42"), false);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
