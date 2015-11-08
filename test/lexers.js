@@ -150,6 +150,20 @@ exports['get list operators'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get comparison operators'] = function (test) {
+    var lexer = lexers.lexer('< > <= >=');
+    
+    ["<", ">", "<=", ">=" ].forEach(function (value) {
+        var token = lexer.nextToken();
+        
+        test.ok(token);
+        test.equal(token.value, value);
+        test.equal(token.type, TokenType.Operator);
+    });
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get string concatenation operator'] = function (test) {
     var lexer = lexers.lexer('<>');
     
