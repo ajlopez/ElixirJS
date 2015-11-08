@@ -71,6 +71,12 @@ exports['evaluate equal'] = function (test) {
     test.strictEqual(expressions.equal(expressions.constant(42), expressions.constant(40)).evaluate(), false);
 };
 
+exports['evaluate not equal'] = function (test) {
+    test.strictEqual(expressions.notEqual(expressions.constant(42), expressions.constant(43)).evaluate(), true);
+    test.strictEqual(expressions.notEqual(expressions.constant(42), expressions.constant(42)).evaluate(), false);
+    test.strictEqual(expressions.notEqual(expressions.constant(42), expressions.constant(40)).evaluate(), true);
+};
+
 exports['evaluate less than'] = function (test) {
     test.strictEqual(expressions.less(expressions.constant(42), expressions.constant(43)).evaluate(), true);
     test.strictEqual(expressions.less(expressions.constant(42), expressions.constant(42)).evaluate(), false);
