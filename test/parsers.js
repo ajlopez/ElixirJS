@@ -495,6 +495,12 @@ exports['parse and evaluate greater expression'] = function (test) {
     test.strictEqual(eval("1 > 42"), false);
 };
 
+exports['parse and evaluate greater or equal expression'] = function (test) {
+    test.strictEqual(eval("1 >= 0"), true);
+    test.strictEqual(eval("1 >= 1"), true);
+    test.strictEqual(eval("1 >= 42"), false);
+};
+
 function eval(text) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
