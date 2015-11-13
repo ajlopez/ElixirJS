@@ -190,6 +190,18 @@ exports['get strict boolean operators'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get in operator'] = function (test) {
+    var lexer = lexers.lexer('in');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, 'in');
+    test.equal(token.type, TokenType.Operator);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get div and rem operators'] = function (test) {
     var lexer = lexers.lexer('div rem');
     
