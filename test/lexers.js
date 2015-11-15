@@ -292,3 +292,16 @@ exports['get first delimiters'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get binary list delimiter'] = function (test) {
+    var lexer = lexers.lexer('<< >>');
+    
+    ["<<", ">>"].forEach(function (value) {
+        var token = lexer.nextToken();
+        
+        test.ok(token);
+        test.equal(token.value, value);
+        test.equal(token.type, TokenType.Delimiter);
+    });
+    
+    test.equal(lexer.nextToken(), null);
+};
