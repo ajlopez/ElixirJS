@@ -202,6 +202,18 @@ exports['get in operator'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get when operator'] = function (test) {
+    var lexer = lexers.lexer('when');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, 'when');
+    test.equal(token.type, TokenType.Operator);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get div and rem operators'] = function (test) {
     var lexer = lexers.lexer('div rem');
     
