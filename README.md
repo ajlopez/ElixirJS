@@ -32,6 +32,8 @@ TBD
 - [Elixir Basic Operators](http://elixir-lang.org/getting-started/basic-operators.html)
 - [Elixir to JavaScript](https://github.com/bryanjos/elixirscript)
 - [How to start](https://howistart.org/posts/elixir/1)
+- [Kernel.SpecialForms](http://elixir-lang.org/docs/v1.0/elixir/Kernel.SpecialForms.html)
+- [Erlang/Elixir Syntax: A Crash Course](http://elixir-lang.org/crash-course.html)
 
 ## Contribution
 
