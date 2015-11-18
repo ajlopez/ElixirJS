@@ -340,6 +340,30 @@ exports['get dot as delimiter'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get names with dot as delimiter'] = function (test) {
+    var lexer = lexers.lexer('foo.bar');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, "foo");
+    test.equal(token.type, TokenType.Name);
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, ".");
+    test.equal(token.type, TokenType.Delimiter);
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, "bar");
+    test.equal(token.type, TokenType.Name);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get binary list delimiter'] = function (test) {
     var lexer = lexers.lexer('<< >>');
     
