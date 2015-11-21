@@ -35,6 +35,7 @@ TBD
 - [Kernel.SpecialForms](http://elixir-lang.org/docs/v1.0/elixir/Kernel.SpecialForms.html)
 - [Erlang/Elixir Syntax: A Crash Course](http://elixir-lang.org/crash-course.html)
 - [Learn Elixir in Y Minutes](http://learnxinyminutes.com/docs/elixir/)
+- [Ruby Colored Glasses: Elixir](http://www.sitepoint.com/ruby-colored-glasses-elixir/)
 
 ## Contribution
 
