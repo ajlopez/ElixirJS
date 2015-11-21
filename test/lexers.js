@@ -413,3 +413,9 @@ exports['get vertical bar as delimiter'] = function (test) {
     
     test.equal(lexer.nextToken(), null);
 };
+
+exports['skip line comment'] = function (test) {
+    var lexer = lexers.lexer('# this is a comment\n');
+    
+    test.equal(lexer.nextToken(), null);
+};
