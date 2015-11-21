@@ -36,6 +36,7 @@ TBD
 - [Erlang/Elixir Syntax: A Crash Course](http://elixir-lang.org/crash-course.html)
 - [Learn Elixir in Y Minutes](http://learnxinyminutes.com/docs/elixir/)
 - [Ruby Colored Glasses: Elixir](http://www.sitepoint.com/ruby-colored-glasses-elixir/)
+- [Elixir Quick Reference](https://github.com/itsgreggreg/elixir_quick_reference)
 
 ## Contribution
 
