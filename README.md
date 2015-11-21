@@ -34,6 +34,7 @@ TBD
 - [How to start](https://howistart.org/posts/elixir/1)
 - [Kernel.SpecialForms](http://elixir-lang.org/docs/v1.0/elixir/Kernel.SpecialForms.html)
 - [Erlang/Elixir Syntax: A Crash Course](http://elixir-lang.org/crash-course.html)
+- [Learn Elixir in Y Minutes](http://learnxinyminutes.com/docs/elixir/)
 
 ## Contribution
 
