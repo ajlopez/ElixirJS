@@ -2,64 +2,44 @@
 var lexers = require('../lib/lexers');
 var TokenType = lexers.TokenType;
 
-exports['get name'] = function (test) {
-    var lexer = lexers.lexer('foo');
+function getName(text, value, test) {
+    var lexer = lexers.lexer(text);
     
     var token = lexer.nextToken();
-
+    
     test.ok(token);
-    test.equal(token.value, 'foo');
+    test.equal(token.value, value);
     test.equal(token.type, TokenType.Name);
     
     test.equal(lexer.nextToken(), null);
+}
+
+exports['get name'] = function (test) {
+    getName('foo', 'foo', test);
 };
 
 exports['get name with underscore'] = function (test) {
-    var lexer = lexers.lexer('foo_bar');
-    
-    var token = lexer.nextToken();
-
-    test.ok(token);
-    test.equal(token.value, 'foo_bar');
-    test.equal(token.type, TokenType.Name);
-    
-    test.equal(lexer.nextToken(), null);
+    getName('foo_bar', 'foo_bar', test);
 };
 
 exports['get name with question mark'] = function (test) {
-    var lexer = lexers.lexer('foo?');
-    
-    var token = lexer.nextToken();
-
-    test.ok(token);
-    test.equal(token.value, 'foo?');
-    test.equal(token.type, TokenType.Name);
-    
-    test.equal(lexer.nextToken(), null);
+    getName('foo?', 'foo?', test);
 };
 
 exports['get name with exclamation mark'] = function (test) {
-    var lexer = lexers.lexer('foo!');
-    
-    var token = lexer.nextToken();
-
-    test.ok(token);
-    test.equal(token.value, 'foo!');
-    test.equal(token.type, TokenType.Name);
-    
-    test.equal(lexer.nextToken(), null);
+    getName('foo!', 'foo!', test);
 };
 
 exports['get name starting with underscore'] = function (test) {
-    var lexer = lexers.lexer('_foo');
-    
-    var token = lexer.nextToken();
+    getName('_foo', '_foo', test);
+};
 
-    test.ok(token);
-    test.equal(token.value, '_foo');
-    test.equal(token.type, TokenType.Name);
-    
-    test.equal(lexer.nextToken(), null);
+exports['get name with spaces'] = function (test) {
+    getName('  foo   ', 'foo', test);
+};
+
+exports['get name skipping comments'] = function (test) {
+    getName('# this is a comment\n  foo  # this is another comment', 'foo', test);
 };
 
 exports['get integer'] = function (test) {
@@ -82,30 +62,6 @@ exports['get negative integer'] = function (test) {
     test.ok(token);
     test.equal(token.value, '-123');
     test.equal(token.type, TokenType.Integer);
-    
-    test.equal(lexer.nextToken(), null);
-};
-
-exports['get name with underscore'] = function (test) {
-    var lexer = lexers.lexer('foo_bar');
-    
-    var token = lexer.nextToken();
-
-    test.ok(token);
-    test.equal(token.value, 'foo_bar');
-    test.equal(token.type, TokenType.Name);
-    
-    test.equal(lexer.nextToken(), null);
-};
-
-exports['get name with spaces'] = function (test) {
-    var lexer = lexers.lexer('  foo   ');
-    
-    var token = lexer.nextToken();
-
-    test.ok(token);
-    test.equal(token.value, 'foo');
-    test.equal(token.type, TokenType.Name);
     
     test.equal(lexer.nextToken(), null);
 };
