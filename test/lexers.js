@@ -50,6 +50,18 @@ exports['get name with exclamation mark'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get name starting with underscore'] = function (test) {
+    var lexer = lexers.lexer('_foo');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '_foo');
+    test.equal(token.type, TokenType.Name);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get integer'] = function (test) {
     var lexer = lexers.lexer('123');
     
