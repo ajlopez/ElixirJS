@@ -42,6 +42,15 @@ exports['get name skipping comments'] = function (test) {
     getName('# this is a comment\n  foo  # this is another comment', 'foo', test);
 };
 
+exports['reject name with internal question mark'] = function (test) {
+    var lexer = lexers.lexer("foo?bar");
+    
+    test.throws(
+        function () { lexer.nextToken(); },
+        "Invalid character '?' in name"
+    );
+};
+
 exports['get integer'] = function (test) {
     var lexer = lexers.lexer('123');
     
