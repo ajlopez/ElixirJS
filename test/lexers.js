@@ -51,6 +51,15 @@ exports['reject name with internal question mark'] = function (test) {
     );
 };
 
+exports['reject name with internal exclamation mark'] = function (test) {
+    var lexer = lexers.lexer("foo!bar");
+    
+    test.throws(
+        function () { lexer.nextToken(); },
+        "Invalid character '!' in name"
+    );
+};
+
 exports['get integer'] = function (test) {
     var lexer = lexers.lexer('123');
     
