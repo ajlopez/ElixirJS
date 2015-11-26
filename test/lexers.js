@@ -324,6 +324,18 @@ exports['get string with escaped backslash'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get string with escaped new line and carriage return'] = function (test) {
+    var lexer = lexers.lexer('"foo\\n\\r"');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, "foo\n\r");
+    test.equal(token.type, TokenType.String);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get first delimiters'] = function (test) {
     var lexer = lexers.lexer('{}[],()');
     
