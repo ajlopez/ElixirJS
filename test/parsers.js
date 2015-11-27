@@ -54,6 +54,22 @@ exports['parse and evaluate atom'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate atom with underscore'] = function (test) {
+    var parser = parsers.parser(':foo_bar');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isAtom());
+    test.equal(result.name(), "foo_bar");
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate false'] = function (test) {
     var parser = parsers.parser('false');
     
