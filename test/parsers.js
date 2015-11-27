@@ -70,6 +70,22 @@ exports['parse and evaluate atom with underscore'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate atom with at'] = function (test) {
+    var parser = parsers.parser(':foo@bar');
+    
+    var expr = parser.parseExpression();
+    
+    test.ok(expr);
+    
+    var result = expr.evaluate(null);
+    
+    test.ok(result);
+    test.ok(result.isAtom());
+    test.equal(result.name(), "foo@bar");
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate false'] = function (test) {
     var parser = parsers.parser('false');
     
