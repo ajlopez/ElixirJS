@@ -17,7 +17,7 @@ TBD
 
 Reference in your program
 ```javascript
-var elixir = require('elixir');
+var elixir = require('elixirjs');
 ```
 
 TBD
