@@ -120,6 +120,30 @@ exports['get atoms'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get atom with exclamation mark'] = function (test) {
+    var lexer = lexers.lexer(':foo!');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'foo!');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get atom with question mark'] = function (test) {
+    var lexer = lexers.lexer(':foo?');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, 'foo?');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get false, true and nil as atoms'] = function (test) {
     var lexer = lexers.lexer('false true nil');
     
@@ -143,6 +167,26 @@ exports['get false, true and nil as atoms'] = function (test) {
     
     test.equal(lexer.nextToken(), null);
 };
+
+exports['reject atom name with internal question mark'] = function (test) {
+    var lexer = lexers.lexer(":foo?bar");
+    
+    test.throws(
+        function () { lexer.nextToken(); },
+        "Invalid character '?' in atom"
+    );
+};
+
+exports['reject atom name with internal exclamation mark'] = function (test) {
+    var lexer = lexers.lexer(":foo!bar");
+    
+    test.throws(
+        function () { lexer.nextToken(); },
+        "Invalid character '!' in atom"
+    );
+};
+
+
 
 exports['get arithmethic operators'] = function (test) {
     var lexer = lexers.lexer('+ - * /');
