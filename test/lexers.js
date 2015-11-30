@@ -186,7 +186,17 @@ exports['reject atom name with internal exclamation mark'] = function (test) {
     );
 };
 
+exports['get atom with double quotes'] = function (test) {
+    var lexer = lexers.lexer(":\"an atom\"");
+    
+    var token = lexer.nextToken();
 
+    test.ok(token);
+    test.equal(token.value, 'an atom');
+    test.equal(token.type, TokenType.Atom);
+    
+    test.equal(lexer.nextToken(), null);
+};
 
 exports['get arithmethic operators'] = function (test) {
     var lexer = lexers.lexer('+ - * /');
