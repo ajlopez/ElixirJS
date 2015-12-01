@@ -252,6 +252,18 @@ exports['get string concatenation operator'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get pipe operator'] = function (test) {
+    var lexer = lexers.lexer('|>');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, "|>");
+    test.equal(token.type, TokenType.Operator);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get strict boolean operators'] = function (test) {
     var lexer = lexers.lexer('not and or');
     
