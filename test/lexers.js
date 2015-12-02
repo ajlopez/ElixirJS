@@ -514,6 +514,18 @@ exports['get range operator'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get right arrow operator'] = function (test) {
+    var lexer = lexers.lexer('->');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, "->");
+    test.equal(token.type, TokenType.Operator);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get vertical bar as delimiter'] = function (test) {
     var lexer = lexers.lexer('|');
     
