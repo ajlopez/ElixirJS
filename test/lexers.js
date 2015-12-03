@@ -290,6 +290,18 @@ exports['get strict boolean operators'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get xor operators'] = function (test) {
+    var lexer = lexers.lexer('xor');
+
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, "xor");
+    test.equal(token.type, TokenType.Operator);
+
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get in operator'] = function (test) {
     var lexer = lexers.lexer('in');
     
