@@ -325,3 +325,17 @@ exports['evaluate list expression with variable'] = function (test) {
     test.equal(result.get(2), 3);
 };
 
+exports['evaluate call expression'] = function (test) {
+    function add(x, y) { return x + y };
+    var ctx = contexts.context();
+    
+    ctx.set('add', add);
+    
+    var expr = expressions.call(expressions.variable('add'), [expressions.constant(2), expressions.constant(3)]);
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(result, 5);
+}
+
