@@ -72,6 +72,18 @@ exports['get integer'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get integer with underscore'] = function (test) {
+    var lexer = lexers.lexer('123_456');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '123456');
+    test.equal(token.type, TokenType.Integer);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get negative integer'] = function (test) {
     var lexer = lexers.lexer('-123');
     
