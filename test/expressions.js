@@ -339,3 +339,17 @@ exports['evaluate call expression'] = function (test) {
     test.equal(result, 5);
 }
 
+exports['evaluate dot expression'] = function (test) {
+    var obj = { name: 'Adam' };
+    var ctx = contexts.context();
+    
+    ctx.set('adam', obj);
+    
+    var expr = expressions.dot(expressions.variable('adam'), 'name');
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(result, 'Adam');
+}
+
