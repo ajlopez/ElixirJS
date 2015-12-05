@@ -84,6 +84,42 @@ exports['get integer with underscore'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get hexadecimal integer with lower case letters'] = function (test) {
+    var lexer = lexers.lexer('0xcafe');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '0xcafe');
+    test.equal(token.type, TokenType.Integer);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get hexadecimal integer with upper case letters'] = function (test) {
+    var lexer = lexers.lexer('0xCAFE');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '0xCAFE');
+    test.equal(token.type, TokenType.Integer);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get hexadecimal integer with letters and digits'] = function (test) {
+    var lexer = lexers.lexer('0xCAFE0042');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '0xCAFE0042');
+    test.equal(token.type, TokenType.Integer);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get negative integer'] = function (test) {
     var lexer = lexers.lexer('-123');
     
