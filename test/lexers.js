@@ -84,6 +84,30 @@ exports['get negative integer'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get real'] = function (test) {
+    var lexer = lexers.lexer('123.45');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '123.45');
+    test.equal(token.type, TokenType.Real);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
+exports['get negative real'] = function (test) {
+    var lexer = lexers.lexer('-123.45');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '-123.45');
+    test.equal(token.type, TokenType.Real);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get names'] = function (test) {
     var lexer = lexers.lexer('foo bar');
     
