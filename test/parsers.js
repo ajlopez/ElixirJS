@@ -14,6 +14,18 @@ exports['parse and evaluate integer'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate integer hexadecimal integer'] = function (test) {
+    var parser = parsers.parser('0xcafe');
+    
+    var result = parser.parseExpression();
+    
+    test.ok(result);
+    
+    test.strictEqual(result.evaluate(null), 51966);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate integer in parenthesis'] = function (test) {
     var parser = parsers.parser('(42)');
     
