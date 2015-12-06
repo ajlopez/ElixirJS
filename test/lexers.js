@@ -84,6 +84,18 @@ exports['get integer with underscore'] = function (test) {
     test.equal(lexer.nextToken(), null);
 };
 
+exports['get binary integer'] = function (test) {
+    var lexer = lexers.lexer('0b10101');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '0b10101');
+    test.equal(token.type, TokenType.Integer);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
 exports['get hexadecimal integer with lower case letters'] = function (test) {
     var lexer = lexers.lexer('0xcafe');
     
