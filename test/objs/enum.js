@@ -7,10 +7,16 @@ exports['reverse function on array'] = function (test) {
     test.deepEqual(enumobj.reverse([1, 2, 3]), [3, 2, 1]);
 };
 
-exports['member function on array'] = function (test) {
+exports['member? function on array'] = function (test) {
     test.ok(enumobj['member?']);
     test.equal(typeof enumobj['member?'], 'function');
     test.strictEqual(enumobj['member?']([1, 2, 3], 1), true);
     test.strictEqual(enumobj['member?']([1, 2, 3], 2), true);
     test.strictEqual(enumobj['member?']([1, 2, 3], 4), false);
+};
+
+exports['join function on array'] = function (test) {
+    test.ok(enumobj.join);
+    test.equal(typeof enumobj.join, 'function');
+    test.equal(enumobj.join([1, 2, 3], '_'), '1_2_3');
 };
