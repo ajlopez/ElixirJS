@@ -34,3 +34,14 @@ exports['is_atom function'] = function (test) {
     test.strictEqual(main.is_atom(atoms.atom('foo')), true);
 };
 
+exports['is_number function'] = function (test) {
+    test.ok(main.is_number);
+    test.equal(typeof main.is_number, 'function');
+    test.strictEqual(main.is_number(null), false);
+    test.strictEqual(main.is_number(42), true);
+    test.strictEqual(main.is_number("foo"), false);
+    test.strictEqual(main.is_number(3.1416), true);
+    test.strictEqual(main.is_number(false), false);
+    test.strictEqual(main.is_number(true), false);
+    test.strictEqual(main.is_number(atoms.atom('false')), false);
+};
