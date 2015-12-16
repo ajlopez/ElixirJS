@@ -1,6 +1,7 @@
 
 var main = require('../../lib/objs/main');
 var atoms = require('../../lib/atoms');
+var lists = require('../../lib/lists');
 
 exports['length function on array'] = function (test) {
     test.ok(main.length);
@@ -45,3 +46,18 @@ exports['is_number function'] = function (test) {
     test.strictEqual(main.is_number(true), false);
     test.strictEqual(main.is_number(atoms.atom('false')), false);
 };
+
+exports['is_list function'] = function (test) {
+    test.ok(main.is_list);
+    test.equal(typeof main.is_list, 'function');
+    test.strictEqual(main.is_list(null), false);
+    test.strictEqual(main.is_list(42), false);
+    test.strictEqual(main.is_list("foo"), false);
+    test.strictEqual(main.is_list(3.1416), false);
+    test.strictEqual(main.is_list([1, 2, 3]), false);
+    test.strictEqual(main.is_list(false), false);
+    test.strictEqual(main.is_list(true), false);
+    test.strictEqual(main.is_list(atoms.atom('foo')), false);
+    test.strictEqual(main.is_list(lists.list(1, lists.list(2, null))), true);
+};
+
