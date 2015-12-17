@@ -61,3 +61,14 @@ exports['is_list function'] = function (test) {
     test.strictEqual(main.is_list(lists.list(1, lists.list(2, null))), true);
 };
 
+exports['is_nil function'] = function (test) {
+    test.ok(main.is_nil);
+    test.equal(typeof main.is_nil, 'function');
+    test.strictEqual(main.is_nil(null), true);
+    test.strictEqual(main.is_nil(undefined), true);
+    test.strictEqual(main.is_nil(42), false);
+    test.strictEqual(main.is_nil("foo"), false);
+    test.strictEqual(main.is_nil(3.1416), false);
+    test.strictEqual(main.is_nil([]), false);
+};
+
