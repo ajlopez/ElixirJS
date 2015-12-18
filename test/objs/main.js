@@ -9,6 +9,10 @@ exports['length function on array'] = function (test) {
     test.equal(main.length([1, 2, 3]), 3);
 };
 
+exports['length function on list'] = function (test) {
+    test.equal(main.length(lists.create([1, 2, 3])), 3);
+};
+
 exports['is_boolean function'] = function (test) {
     test.ok(main.is_boolean);
     test.equal(typeof main.is_boolean, 'function');
