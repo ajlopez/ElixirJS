@@ -2,6 +2,7 @@
 var main = require('../../lib/objs/main');
 var atoms = require('../../lib/atoms');
 var lists = require('../../lib/lists');
+var tuples = require('../../lib/tuples');
 
 exports['length function on array'] = function (test) {
     test.ok(main.length);
@@ -63,6 +64,21 @@ exports['is_list function'] = function (test) {
     test.strictEqual(main.is_list(true), false);
     test.strictEqual(main.is_list(atoms.atom('foo')), false);
     test.strictEqual(main.is_list(lists.list(1, lists.list(2, null))), true);
+};
+
+exports['is_tuple function'] = function (test) {
+    test.ok(main.is_tuple);
+    test.equal(typeof main.is_tuple, 'function');
+    test.strictEqual(main.is_tuple(null), false);
+    test.strictEqual(main.is_tuple(42), false);
+    test.strictEqual(main.is_tuple("foo"), false);
+    test.strictEqual(main.is_tuple(3.1416), false);
+    test.strictEqual(main.is_tuple([1, 2, 3]), false);
+    test.strictEqual(main.is_tuple(false), false);
+    test.strictEqual(main.is_tuple(true), false);
+    test.strictEqual(main.is_tuple(atoms.atom('foo')), false);
+    test.strictEqual(main.is_tuple(lists.list(1, lists.list(2, null))), false);
+    test.strictEqual(main.is_tuple(tuples.tuple([1, 2, 3])), true);
 };
 
 exports['is_nil function'] = function (test) {
