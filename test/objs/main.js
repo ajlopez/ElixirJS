@@ -69,6 +69,23 @@ exports['is_integer function'] = function (test) {
     test.strictEqual(main.is_integer(atoms.atom('false')), false);
 };
 
+exports['is_float function'] = function (test) {
+    test.ok(main.is_float);
+    test.equal(typeof main.is_float, 'function');
+    test.strictEqual(main.is_float(null), false);
+    test.strictEqual(main.is_float(42), false);
+    test.strictEqual(main.is_float("foo"), false);
+    test.strictEqual(main.is_float(3.1416), true);
+    test.strictEqual(main.is_float(-3.1416), true);
+    test.strictEqual(main.is_float(2), false);
+    test.strictEqual(main.is_float(-2), false);
+    test.strictEqual(main.is_float(1.0), false);
+    test.strictEqual(main.is_float(-1.0), false);
+    test.strictEqual(main.is_float(false), false);
+    test.strictEqual(main.is_float(true), false);
+    test.strictEqual(main.is_float(atoms.atom('false')), false);
+};
+
 exports['is_list function'] = function (test) {
     test.ok(main.is_list);
     test.equal(typeof main.is_list, 'function');
