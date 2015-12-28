@@ -126,3 +126,11 @@ exports['is_nil function'] = function (test) {
     test.strictEqual(main.is_nil([]), false);
 };
 
+exports['abs function'] = function (test) {
+    test.ok(main.abs);
+    test.equal(typeof main.abs, 'function');
+    test.strictEqual(main.abs(1), 1);
+    test.strictEqual(main.abs(1.2), 1.2);
+    test.strictEqual(main.abs(-42), 42);
+    test.strictEqual(main.abs(-3.1415), 3.1415);
+};
