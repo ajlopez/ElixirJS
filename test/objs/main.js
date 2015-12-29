@@ -134,3 +134,12 @@ exports['abs function'] = function (test) {
     test.strictEqual(main.abs(-42), 42);
     test.strictEqual(main.abs(-3.1415), 3.1415);
 };
+
+exports['tuple_size function'] = function (test) {
+    test.ok(main.tuple_size);
+    test.equal(typeof main.tuple_size, 'function');
+    test.strictEqual(main.tuple_size(tuples.tuple([])), 0);
+    test.strictEqual(main.tuple_size(tuples.tuple([1])), 1);
+    test.strictEqual(main.tuple_size(tuples.tuple([1, 2])), 2);
+    test.strictEqual(main.tuple_size(tuples.tuple([4, 5, 6])), 3);
+};
