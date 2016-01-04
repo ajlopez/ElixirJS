@@ -143,3 +143,11 @@ exports['tuple_size function'] = function (test) {
     test.strictEqual(main.tuple_size(tuples.tuple([1, 2])), 2);
     test.strictEqual(main.tuple_size(tuples.tuple([4, 5, 6])), 3);
 };
+
+exports['hd function'] = function (test) {
+    test.ok(main.hd);
+    test.equal(typeof main.hd, 'function');
+    test.strictEqual(main.hd(lists.create([1, 2, 3])), 1);
+    test.strictEqual(main.hd(lists.create([1])), 1);
+    test.strictEqual(main.hd(lists.create([null, 2, 3])), null);
+};
