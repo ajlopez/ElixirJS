@@ -144,6 +144,13 @@ exports['tuple_size function'] = function (test) {
     test.strictEqual(main.tuple_size(tuples.tuple([4, 5, 6])), 3);
 };
 
+exports['elem function'] = function (test) {
+    test.ok(main.elem);
+    test.equal(typeof main.elem, 'function');
+    test.strictEqual(main.elem(tuples.tuple([1]), 0), 1);
+    test.strictEqual(main.elem(tuples.tuple([1, 2]), 1), 2);
+};
+
 exports['hd function'] = function (test) {
     test.ok(main.hd);
     test.equal(typeof main.hd, 'function');
