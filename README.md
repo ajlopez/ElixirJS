@@ -37,6 +37,7 @@ TBD
 - [Learn Elixir in Y Minutes](http://learnxinyminutes.com/docs/elixir/)
 - [Ruby Colored Glasses: Elixir](http://www.sitepoint.com/ruby-colored-glasses-elixir/)
 - [Elixir Quick Reference](https://github.com/itsgreggreg/elixir_quick_reference)
+- [Elixir Block Keywords](http://thepugautomatic.com/2015/12/elixir-block-keywords/)
 
 ## Contribution
 
