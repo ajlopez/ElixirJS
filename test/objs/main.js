@@ -176,3 +176,11 @@ exports['tl function'] = function (test) {
     test.strictEqual(main.tl(lists.create([1])), null);
     test.strictEqual(main.tl(lists.create([null, 2, 3])).toString(), "[ 2, 3 ]");
 };
+
+exports['tl function'] = function (test) {
+    test.ok(main.tl);
+    test.equal(typeof main.tl, 'function');
+    test.strictEqual(main.tl(lists.create([1, 2, 3])).toString(), "[ 2, 3 ]");
+    test.strictEqual(main.tl(lists.create([1])), null);
+    test.strictEqual(main.tl(lists.create([null, 2, 3])).toString(), "[ 2, 3 ]");
+};

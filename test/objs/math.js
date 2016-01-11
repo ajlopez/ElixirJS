@@ -1,0 +1,18 @@
+
+var math = require('../../lib/objs/math');
+
+exports['Pi value'] = function (test) {
+    test.equal(math.pi, Math.PI);
+}
+
+exports['sine function'] = function (test) {
+    test.equal(math.sin(0), Math.sin(0));
+    test.equal(math.sin(1), Math.sin(1));
+    test.equal(math.sin(math.pi), Math.sin(Math.PI));
+}
+
+exports['cosine function'] = function (test) {
+    test.equal(math.cos(0), Math.cos(0));
+    test.equal(math.cos(1), Math.cos(1));
+    test.equal(math.cos(math.pi), Math.cos(Math.PI));
+}
