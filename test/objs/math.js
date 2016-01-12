@@ -16,3 +16,10 @@ exports['cosine function'] = function (test) {
     test.equal(math.cos(1), Math.cos(1));
     test.equal(math.cos(math.pi), Math.cos(Math.PI));
 }
+
+exports['power function'] = function (test) {
+    test.equal(math.pow(2, 16), Math.pow(2,16));
+    test.equal(math.pow(3, 2), Math.pow(3, 2));
+    test.equal(math.pow(1.3, 0.5), Math.pow(1.3, 0.5));
+}
+
