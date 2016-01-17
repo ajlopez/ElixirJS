@@ -17,6 +17,12 @@ exports['cosine function'] = function (test) {
     test.equal(math.cos(math.pi), Math.cos(Math.PI));
 }
 
+exports['tangent function'] = function (test) {
+    test.equal(math.tan(0), Math.tan(0));
+    test.equal(math.tan(1), Math.tan(1));
+    test.equal(math.tan(math.pi), Math.tan(Math.PI));
+}
+
 exports['power function'] = function (test) {
     test.equal(math.pow(2, 16), Math.pow(2,16));
     test.equal(math.pow(3, 2), Math.pow(3, 2));
