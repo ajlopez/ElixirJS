@@ -40,6 +40,7 @@ TBD
 - [Ruby Colored Glasses: Elixir](http://www.sitepoint.com/ruby-colored-glasses-elixir/)
 - [Elixir Quick Reference](https://github.com/itsgreggreg/elixir_quick_reference)
 - [Elixir Block Keywords](http://thepugautomatic.com/2015/12/elixir-block-keywords/)
+- [Comparing Elixir and Erlang variables](http://blog.plataformatec.com.br/2016/01/comparing-elixir-and-erlang-variables)
 
 ### Erlang
 
