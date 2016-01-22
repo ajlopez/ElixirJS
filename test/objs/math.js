@@ -11,6 +11,12 @@ exports['sine function'] = function (test) {
     test.equal(math.sin(math.pi), Math.sin(Math.PI));
 }
 
+exports['arcsine function'] = function (test) {
+    test.equal(math.asin(0), Math.asin(0));
+    test.equal(math.asin(1), Math.asin(1));
+    test.equal(math.asin(-1), Math.asin(-1));
+}
+
 exports['cosine function'] = function (test) {
     test.equal(math.cos(0), Math.cos(0));
     test.equal(math.cos(1), Math.cos(1));
