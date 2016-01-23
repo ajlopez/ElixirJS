@@ -23,6 +23,12 @@ exports['cosine function'] = function (test) {
     test.equal(math.cos(math.pi), Math.cos(Math.PI));
 }
 
+exports['arccosine function'] = function (test) {
+    test.equal(math.acos(0), Math.acos(0));
+    test.equal(math.acos(1), Math.acos(1));
+    test.equal(math.acos(-1), Math.acos(-1));
+}
+
 exports['tangent function'] = function (test) {
     test.equal(math.tan(0), Math.tan(0));
     test.equal(math.tan(1), Math.tan(1));
