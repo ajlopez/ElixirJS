@@ -35,6 +35,12 @@ exports['tangent function'] = function (test) {
     test.equal(math.tan(math.pi), Math.tan(Math.PI));
 }
 
+exports['arctangent function'] = function (test) {
+    test.equal(math.atan(0), Math.atan(0));
+    test.equal(math.atan(1), Math.atan(1));
+    test.equal(math.atan(20), Math.atan(20));
+}
+
 exports['power function'] = function (test) {
     test.equal(math.pow(2, 16), Math.pow(2,16));
     test.equal(math.pow(3, 2), Math.pow(3, 2));
