@@ -42,6 +42,7 @@ TBD
 - [Elixir Block Keywords](http://thepugautomatic.com/2015/12/elixir-block-keywords/)
 - [Comparing Elixir and Erlang variables](http://blog.plataformatec.com.br/2016/01/comparing-elixir-and-erlang-variables)
 - [Supervisor and Application](http://elixir-lang.org/getting-started/mix-otp/supervisor-and-application.html)
+- [Running Elixir and Phoenix projects on a cluster of nodes](https://dockyard.com/blog/2016/01/28/running-elixir-and-phoenix-projects-on-a-cluster-of-nodes)
 
 ### Erlang
 
