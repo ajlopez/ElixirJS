@@ -564,10 +564,22 @@ exports['parse and evaluate greater or equal expression'] = function (test) {
     test.strictEqual(eval("1 >= 42"), false);
 };
 
-function eval(text) {
+exports['parse and evaluate function call expression'] = function (test) {
+    var ctx = contexts.context();
+    ctx.set('add', function (x, y) { return x + y; });
+    test.strictEqual(eval("add(1, 2)", ctx), 3);
+};
+
+exports['parse and evaluate function call expression without parens'] = function (test) {
+    var ctx = contexts.context();
+    ctx.set('add', function (x, y) { return x + y; });
+    test.strictEqual(eval("add 1, 2", ctx), 3);
+};
+
+function eval(text, ctx) {
     var parser = parsers.parser(text);    
     var expr = parser.parseExpression();
-    return expr.evaluate();
+    return expr.evaluate(ctx);
 }
 
 
