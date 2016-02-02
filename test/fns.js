@@ -27,3 +27,15 @@ exports['function with one expression'] = function (test) {
     test.equal(result, 42);
 }
 
+exports['function with one expression referencing argument'] = function (test) {
+    var fn = fns.fn('foo', ["a"], [expressions.variable("a")]);
+    var ctx = contexts.context();
+    
+    test.equal(fn.name(), 'foo');
+    test.equal(fn.arity(), 1);
+    
+    var result = fn.evaluate(ctx, [42]);
+    
+    test.equal(result, 42);
+}
+
