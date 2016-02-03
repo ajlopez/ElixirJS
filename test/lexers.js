@@ -39,7 +39,21 @@ exports['get name with spaces'] = function (test) {
 };
 
 exports['get name skipping comments'] = function (test) {
-    getName('# this is a comment\n  foo  # this is another comment', 'foo', test);
+    var lexer = lexers.lexer('# this is a comment\n  foo  # this is another comment');
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, '\n');
+    test.equal(token.type, TokenType.EndOfLine);
+    
+    var token = lexer.nextToken();
+    
+    test.ok(token);
+    test.equal(token.value, 'foo');
+    test.equal(token.type, TokenType.Name);
+    
+    test.equal(lexer.nextToken(), null);
 };
 
 exports['reject name with internal question mark'] = function (test) {
@@ -649,5 +663,24 @@ exports['get vertical bar as operator'] = function (test) {
 exports['skip line comment'] = function (test) {
     var lexer = lexers.lexer('# this is a comment\n');
     
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '\n');
+    test.equal(token.type, TokenType.EndOfLine);
+    
     test.equal(lexer.nextToken(), null);
 };
+
+exports['get end of line'] = function (test) {
+    var lexer = lexers.lexer('\n');
+    
+    var token = lexer.nextToken();
+
+    test.ok(token);
+    test.equal(token.value, '\n');
+    test.equal(token.type, TokenType.EndOfLine);
+    
+    test.equal(lexer.nextToken(), null);
+};
+
