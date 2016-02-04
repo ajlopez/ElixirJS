@@ -14,6 +14,24 @@ exports['parse and evaluate integer'] = function (test) {
     test.equal(parser.parseExpression(), null);
 };
 
+exports['parse and evaluate two integers in different lines'] = function (test) {
+    var parser = parsers.parser('42\n1');
+    
+    var result = parser.parseExpression();
+    
+    test.ok(result);
+    
+    test.strictEqual(result.evaluate(null), 42);
+    
+    var result = parser.parseExpression();
+    
+    test.ok(result);
+    
+    test.strictEqual(result.evaluate(null), 1);
+    
+    test.equal(parser.parseExpression(), null);
+};
+
 exports['parse and evaluate integer hexadecimal integer'] = function (test) {
     var parser = parsers.parser('0xcafe');
     
