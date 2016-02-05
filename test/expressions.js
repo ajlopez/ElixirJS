@@ -366,3 +366,13 @@ exports['evaluate dot expression'] = function (test) {
     test.equal(result, 'Adam');
 }
 
+exports['evaluate def expression'] = function (test) {
+    var ctx = contexts.context();
+    var expr = expressions.def('foo', ["a"], [expressions.variable("a")]);
+    
+    var fn = expr.evaluate(ctx);
+    
+    test.ok(fn);
+    test.equal(fn, ctx.get('foo'));
+    test.equal(fn.evaluate(ctx, [42]), 42);
+}
