@@ -47,3 +47,9 @@ exports['power function'] = function (test) {
     test.equal(math.pow(1.3, 0.5), Math.pow(1.3, 0.5));
 }
 
+exports['log function'] = function (test) {
+    test.equal(math.log(Math.E), 1);
+    test.equal(math.log(10), Math.log(10));
+    test.equal(math.log(1), 0);
+}
+
