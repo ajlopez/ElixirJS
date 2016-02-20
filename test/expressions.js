@@ -374,5 +374,19 @@ exports['evaluate def expression'] = function (test) {
     
     test.ok(fn);
     test.equal(fn, ctx.get('foo'));
-    test.equal(fn.evaluate(ctx, [42]), 42);
+    test.equal(fn.evaluate([42]), 42);
 }
+
+exports['evaluate def expression using def context'] = function (test) {
+    var ctx = contexts.context();
+    ctx.set('a', 42);
+    var expr = expressions.def('foo', [], [expressions.variable("a")]);
+    
+    var fn = expr.evaluate(ctx);
+    
+    test.ok(fn);
+    test.equal(fn, ctx.get('foo'));
+    
+    test.equal(fn.evaluate([42]), 42);
+}
+
