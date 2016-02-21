@@ -390,3 +390,34 @@ exports['evaluate def expression using def context'] = function (test) {
     test.equal(fn.evaluate([42]), 42);
 }
 
+exports['evaluate if expression with true condition'] = function (test) {
+    var ctx = contexts.context();
+    ctx.set('a', 42);
+    var expr = expressions.if(expressions.constant(true), expressions.constant(1));
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(result, 1);
+}
+
+exports['evaluate if expression with false condition with no else expression'] = function (test) {
+    var ctx = contexts.context();
+    ctx.set('a', 42);
+    var expr = expressions.if(expressions.constant(false), expressions.constant(1));
+    
+    var result = expr.evaluate(ctx);
+    
+    test.equal(result, null);
+}
+
+exports['evaluate if expression with false condition with else expression'] = function (test) {
+    var ctx = contexts.context();
+    ctx.set('a', 42);
+    var expr = expressions.if(expressions.constant(false), expressions.constant(1), expressions.constant(2));
+    
+    var result = expr.evaluate(ctx);
+    
+    test.ok(result);
+    test.equal(result, 2);
+}
