@@ -44,6 +44,9 @@ TBD
 - [Supervisor and Application](http://elixir-lang.org/getting-started/mix-otp/supervisor-and-application.html)
 - [Running Elixir and Phoenix projects on a cluster of nodes](https://dockyard.com/blog/2016/01/28/running-elixir-and-phoenix-projects-on-a-cluster-of-nodes)
 - [Elixir Parser, Grammar](https://github.com/elixir-lang/elixir/blob/master/lib/elixir/src/elixir_parser.yrl)
+- [Playing with Elixir and Go concurrency models](http://blog.plataformatec.com.br/2014/10/playing-with-elixir-and-go-concurrency-models/)
+- [Comparing Elixir and Erlang variables](http://blog.plataformatec.com.br/2016/01/comparing-elixir-and-erlang-variables/)
+- [Elixir Kernel](http://elixir-lang.org/docs/stable/elixir/Kernel.html)
 
 ### Erlang
 
