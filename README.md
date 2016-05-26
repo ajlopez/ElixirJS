@@ -47,6 +47,7 @@ TBD
 - [Playing with Elixir and Go concurrency models](http://blog.plataformatec.com.br/2014/10/playing-with-elixir-and-go-concurrency-models/)
 - [Comparing Elixir and Erlang variables](http://blog.plataformatec.com.br/2016/01/comparing-elixir-and-erlang-variables/)
 - [Elixir Kernel](http://elixir-lang.org/docs/stable/elixir/Kernel.html)
+- [Elixir School](http://elixirschool.com/)
 
 ### Erlang
 
