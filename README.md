@@ -52,7 +52,7 @@ TBD
 ### Erlang
 
 - [Math Module](http://www.erlang.org/doc/man/math.html)
-
+- [How OTP Applications are structured](https://blog.appsignal.com/2018/09/18/elixir-alchemy-how-otp-applications-are-structured.html)
 
 ## Contribution
 
