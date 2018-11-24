@@ -312,7 +312,7 @@ exports['evaluate append lists expression'] = function (test) {
 exports['evaluate subtract lists expression'] = function (test) {
     var lexpr1 = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)])
     var lexpr2 = expressions.list([expressions.constant(2), expressions.constant(5)])
-    var expr = expressions.subtractl(lexpr1, lexpr2);
+    var expr = expressions.subtractList(lexpr1, lexpr2);
     
     var result = expr.evaluate(null);
     
