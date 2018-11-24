@@ -53,6 +53,7 @@ TBD
 
 - [Math Module](http://www.erlang.org/doc/man/math.html)
 - [How OTP Applications are structured](https://blog.appsignal.com/2018/09/18/elixir-alchemy-how-otp-applications-are-structured.html)
+- [Hitchhiker’s Tour of the BEAM](http://www.erlang-factory.com/upload/presentations/708/HitchhikersTouroftheBEAM.pdf)
 
 ## Contribution
 
