@@ -54,6 +54,8 @@ TBD
 - [Math Module](http://www.erlang.org/doc/man/math.html)
 - [How OTP Applications are structured](https://blog.appsignal.com/2018/09/18/elixir-alchemy-how-otp-applications-are-structured.html)
 - [Hitchhiker’s Tour of the BEAM](http://www.erlang-factory.com/upload/presentations/708/HitchhikersTouroftheBEAM.pdf)
+- [Programming Erlang](http://www.drdobbs.com/architecture-and-design/programming-erlang/201001928?cid=RSSfeed_DDJ_OpenSource)
+- [The Erlang BEAM Virtual Machine Specification](http://www.cs-lab.org/historical_beam_instruction_set.html)
 
 ## Contribution
 
