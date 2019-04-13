@@ -1,9 +1,9 @@
 
-var expressions = require('../lib/expressions');
-var contexts = require('../lib/contexts');
+const expressions = require('../lib/expressions');
+const contexts = require('../lib/contexts');
 
 exports['create and evaluate integer constant'] = function (test) {
-    var result = expressions.constant(42);
+    const result = expressions.constant(42);
     
     test.ok(result);
     test.equal(typeof result, 'object');
@@ -11,8 +11,8 @@ exports['create and evaluate integer constant'] = function (test) {
 };
 
 exports['create and evaluate variable in context'] = function (test) {
-    var result = expressions.variable("n");
-    var ctx = contexts.context();
+    const result = expressions.variable("n");
+    const ctx = contexts.context();
     
     ctx.set("n", 42);
     
@@ -22,10 +22,10 @@ exports['create and evaluate variable in context'] = function (test) {
 };
 
 exports['evaluate undefined variable'] = function (test) {
-    var expr = expressions.variable("n");
-    var ctx = contexts.context();
+    const expr = expressions.variable("n");
+    const ctx = contexts.context();
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.equal(typeof result, 'object');
@@ -34,7 +34,7 @@ exports['evaluate undefined variable'] = function (test) {
 };
 
 exports['create and evaluate add constants'] = function (test) {
-    var result = expressions.add(expressions.constant(20), expressions.constant(22));
+    const result = expressions.add(expressions.constant(20), expressions.constant(22));
     
     test.ok(result);
     test.equal(typeof result, 'object');
@@ -42,7 +42,7 @@ exports['create and evaluate add constants'] = function (test) {
 };
 
 exports['create and evaluate multiply constants'] = function (test) {
-    var result = expressions.multiply(expressions.constant(2), expressions.constant(21));
+    const result = expressions.multiply(expressions.constant(2), expressions.constant(21));
     
     test.ok(result);
     test.equal(typeof result, 'object');
@@ -50,7 +50,7 @@ exports['create and evaluate multiply constants'] = function (test) {
 };
 
 exports['create and evaluate divide constants'] = function (test) {
-    var result = expressions.divide(expressions.constant(84), expressions.constant(2));
+    const result = expressions.divide(expressions.constant(84), expressions.constant(2));
     
     test.ok(result);
     test.equal(typeof result, 'object');
@@ -58,7 +58,7 @@ exports['create and evaluate divide constants'] = function (test) {
 };
 
 exports['create and evaluate compare constants with less'] = function (test) {
-    var result = expressions.less(expressions.constant(42), expressions.constant(43));
+    const result = expressions.less(expressions.constant(42), expressions.constant(43));
     
     test.ok(result);
     test.equal(typeof result, 'object');
@@ -242,9 +242,9 @@ exports['evaluate string concatenation'] = function (test) {
 };
 
 exports['evaluate tuple expression'] = function (test) {
-    var expr = expressions.tuple([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
+    const expr = expressions.tuple([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
     
-    var result = expr.evaluate(null);
+    const result = expr.evaluate(null);
     
     test.ok(result);
     test.ok(result.isTuple());
@@ -255,12 +255,12 @@ exports['evaluate tuple expression'] = function (test) {
 };
 
 exports['evaluate tuple expression with variable'] = function (test) {
-    var expr = expressions.tuple([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
-    var ctx = contexts.context();
+    const expr = expressions.tuple([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
+    const ctx = contexts.context();
     
     ctx.set('a', 42);
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.ok(result.isTuple());
@@ -271,9 +271,9 @@ exports['evaluate tuple expression with variable'] = function (test) {
 };
 
 exports['evaluate cons expression'] = function (test) {
-    var expr = expressions.cons(expressions.constant(1), expressions.cons(expressions.constant(2), expressions.list([expressions.constant(3)])));
+    const expr = expressions.cons(expressions.constant(1), expressions.cons(expressions.constant(2), expressions.list([expressions.constant(3)])));
     
-    var result = expr.evaluate(null);
+    const result = expr.evaluate(null);
     
     test.ok(result);
     test.ok(result.isList());
@@ -284,9 +284,9 @@ exports['evaluate cons expression'] = function (test) {
 };
 
 exports['evaluate list expression'] = function (test) {
-    var expr = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
+    const expr = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)]);
     
-    var result = expr.evaluate(null);
+    const result = expr.evaluate(null);
     
     test.ok(result);
     test.ok(result.isList());
@@ -297,11 +297,11 @@ exports['evaluate list expression'] = function (test) {
 };
 
 exports['evaluate append lists expression'] = function (test) {
-    var lexpr1 = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)])
-    var lexpr2 = expressions.list([expressions.constant(4), expressions.constant(5)])
-    var expr = expressions.append(lexpr1, lexpr2);
+    const lexpr1 = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)])
+    const lexpr2 = expressions.list([expressions.constant(4), expressions.constant(5)])
+    const expr = expressions.append(lexpr1, lexpr2);
     
-    var result = expr.evaluate(null);
+    const result = expr.evaluate(null);
     
     test.ok(result);
     test.ok(result.isList());
@@ -310,11 +310,11 @@ exports['evaluate append lists expression'] = function (test) {
 };
 
 exports['evaluate subtract lists expression'] = function (test) {
-    var lexpr1 = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)])
-    var lexpr2 = expressions.list([expressions.constant(2), expressions.constant(5)])
-    var expr = expressions.subtractList(lexpr1, lexpr2);
+    const lexpr1 = expressions.list([expressions.constant(1), expressions.constant(2), expressions.constant(3)])
+    const lexpr2 = expressions.list([expressions.constant(2), expressions.constant(5)])
+    const expr = expressions.subtractList(lexpr1, lexpr2);
     
-    var result = expr.evaluate(null);
+    const result = expr.evaluate(null);
     
     test.ok(result);
     test.ok(result.isList());
@@ -323,12 +323,12 @@ exports['evaluate subtract lists expression'] = function (test) {
 };
 
 exports['evaluate list expression with variable'] = function (test) {
-    var expr = expressions.list([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
-    var ctx = contexts.context();
+    const expr = expressions.list([expressions.constant(1), expressions.variable('a'), expressions.constant(3)]);
+    const ctx = contexts.context();
     
     ctx.set('a', 42);
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.ok(result.isList());
@@ -340,37 +340,37 @@ exports['evaluate list expression with variable'] = function (test) {
 
 exports['evaluate call expression'] = function (test) {
     function add(x, y) { return x + y };
-    var ctx = contexts.context();
+    const ctx = contexts.context();
     
     ctx.set('add', add);
     
-    var expr = expressions.call(expressions.variable('add'), [expressions.constant(2), expressions.constant(3)]);
+    const expr = expressions.call(expressions.variable('add'), [expressions.constant(2), expressions.constant(3)]);
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.equal(result, 5);
 }
 
 exports['evaluate dot expression'] = function (test) {
-    var obj = { name: 'Adam' };
-    var ctx = contexts.context();
+    const obj = { name: 'Adam' };
+    const ctx = contexts.context();
     
     ctx.set('adam', obj);
     
-    var expr = expressions.dot(expressions.variable('adam'), 'name');
+    const expr = expressions.dot(expressions.variable('adam'), 'name');
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.equal(result, 'Adam');
 }
 
 exports['evaluate def expression'] = function (test) {
-    var ctx = contexts.context();
-    var expr = expressions.def('foo', ["a"], [expressions.variable("a")]);
+    const ctx = contexts.context();
+    const expr = expressions.def('foo', ["a"], [expressions.variable("a")]);
     
-    var fn = expr.evaluate(ctx);
+    const fn = expr.evaluate(ctx);
     
     test.ok(fn);
     test.equal(fn, ctx.get('foo'));
@@ -378,11 +378,11 @@ exports['evaluate def expression'] = function (test) {
 }
 
 exports['evaluate def expression using def context'] = function (test) {
-    var ctx = contexts.context();
+    const ctx = contexts.context();
     ctx.set('a', 42);
-    var expr = expressions.def('foo', [], [expressions.variable("a")]);
+    const expr = expressions.def('foo', [], [expressions.variable("a")]);
     
-    var fn = expr.evaluate(ctx);
+    const fn = expr.evaluate(ctx);
     
     test.ok(fn);
     test.equal(fn, ctx.get('foo'));
@@ -391,32 +391,32 @@ exports['evaluate def expression using def context'] = function (test) {
 }
 
 exports['evaluate if expression with true condition'] = function (test) {
-    var ctx = contexts.context();
+    const ctx = contexts.context();
     ctx.set('a', 42);
-    var expr = expressions.if(expressions.constant(true), expressions.constant(1));
+    const expr = expressions.if(expressions.constant(true), expressions.constant(1));
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.equal(result, 1);
 }
 
 exports['evaluate if expression with false condition with no else expression'] = function (test) {
-    var ctx = contexts.context();
+    const ctx = contexts.context();
     ctx.set('a', 42);
-    var expr = expressions.if(expressions.constant(false), expressions.constant(1));
+    const expr = expressions.if(expressions.constant(false), expressions.constant(1));
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.equal(result, null);
 }
 
 exports['evaluate if expression with false condition with else expression'] = function (test) {
-    var ctx = contexts.context();
+    const ctx = contexts.context();
     ctx.set('a', 42);
-    var expr = expressions.if(expressions.constant(false), expressions.constant(1), expressions.constant(2));
+    const expr = expressions.if(expressions.constant(false), expressions.constant(1), expressions.constant(2));
     
-    var result = expr.evaluate(ctx);
+    const result = expr.evaluate(ctx);
     
     test.ok(result);
     test.equal(result, 2);

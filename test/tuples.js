@@ -1,8 +1,8 @@
 
-var tuples = require('../lib/tuples');
+const tuples = require('../lib/tuples');
 
 exports['create tuple'] = function (test) {
-    var tuple = tuples.tuple([1, 2, 3]);
+    const tuple = tuples.tuple([1, 2, 3]);
     
     test.ok(tuple);
     test.equal(typeof tuple, 'object');
@@ -18,7 +18,7 @@ exports['create tuple'] = function (test) {
 }
 
 exports['tuple to string'] = function (test) {
-    var tuple = tuples.tuple([1, 2, 3]);
+    const tuple = tuples.tuple([1, 2, 3]);
     
     test.equal(tuple.toString(), "{ 1, 2, 3 }");
 }

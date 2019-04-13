@@ -1,8 +1,8 @@
 
-var variables = require('../lib/variables');
+const variables = require('../lib/variables');
 
 exports['create variable'] = function (test) {
-    var variable = variables.variable("foo");
+    const variable = variables.variable("foo");
     
     test.ok(variable);
     test.equal(typeof variable, 'object');
